@@ -19,17 +19,17 @@ namespace TeamRedProject.Services
 
         //Realestate
         #region
-        public void AddRealEstate(int userId, RealEstate realEstate)
+        public void AddRealEstate(RealEstate realEstate)
         {
-            if(userId <= 0)
-            {
-                throw new ArgumentNullException(nameof(userId));
-            }
+            //if(userId <= 0)
+            //{
+            //    throw new ArgumentNullException(nameof(userId));
+            //}
             if(realEstate == null)
             {
                 throw new ArgumentNullException(nameof(realEstate));
             }
-            realEstate.UserId = userId;
+            //realEstate.UserId = userId;
             _context.RealEstates.Add(realEstate);
         }
 
@@ -48,18 +48,14 @@ namespace TeamRedProject.Services
             _context.RealEstates.Remove(realEstate);
         }
 
-        public RealEstate GetRealEstate(int realEstateId, int userId)
+        public RealEstate GetRealEstate(int realEstateId)
         {
-            if(userId <= 0)
-            {
-                throw new ArgumentNullException(nameof(userId));
-            }
             if(realEstateId <= 0)
             {
                 throw new ArgumentNullException(nameof(realEstateId));
             }
             return _context.RealEstates
-                .Where(r => r.UserId == userId && r.Id == realEstateId).FirstOrDefault();
+                .Where(r =>r.Id == realEstateId).FirstOrDefault();
         }
 
         public IEnumerable<RealEstate> GetRealEstates(int userId)
@@ -71,7 +67,17 @@ namespace TeamRedProject.Services
 
             return _context.RealEstates
                 .Where(r => r.UserId == userId)
-                .OrderBy(r => r.Name).ToList();
+                .OrderBy(r => r.Title).ToList();
+        }
+
+        public IEnumerable<RealEstate> GetRealEstates(string skip, string take)
+        {
+            if (skip == null) skip = "0";
+            if (take == null) take = "10";
+            return _context.RealEstates.ToList<RealEstate>()
+                .OrderByDescending(o => o.adCreated)
+                .Skip(int.Parse(skip))
+                .Take(int.Parse(take));
         }
 
         #endregion
@@ -101,14 +107,11 @@ namespace TeamRedProject.Services
             _context.Users.Remove(user);
         }
 
-        public User GetUser(int userId)
+        public User GetUser(string userName)
         {
-            if(userId <= 0)
-            {
-                throw new ArgumentNullException(nameof(userId));
-            }
+           if(userName== null) throw new ArgumentNullException(nameof(userName));
 
-            return _context.Users.FirstOrDefault(a => a.Id == userId);
+            return _context.Users.FirstOrDefault(a => a.Name == userName);
         }
 
         public IEnumerable<User> GetUsers()
@@ -166,17 +169,46 @@ namespace TeamRedProject.Services
             return _context.Comments.Where(r => r.UserId == userId);
         }
 
-        public void AddComment(Comment comment, int userId)
+        public IEnumerable<Comment> GetComments(int realEstateId, string skip, string take)
+        {
+            if (realEstateId <= 0)
+            {
+                throw new ArgumentNullException(nameof(realEstateId));
+            }
+
+            if (skip == null) skip = "0";
+            if (take == null) take = "10";
+            return _context.Comments.ToList<Comment>()
+                .OrderByDescending(o => o.CreatedOn)
+                .Skip(int.Parse(skip))
+                .Take(int.Parse(take));
+        }
+
+        public IEnumerable<Comment> GetCommentsFromUser(string userName, string skip, string take)
+        {
+
+            var user = _context.Users.Where(x => x.Name == userName).FirstOrDefault();
+            
+            if (skip == null) skip = "0";
+            if (take == null) take = "10";
+            return _context.Comments.ToList<Comment>()
+                .Where(x => x.UserId == user.Id)
+                .OrderByDescending(o => o.CreatedOn)
+                .Skip(int.Parse(skip))
+                .Take(int.Parse(take));
+        }
+
+        public void AddComment(Comment comment)
         {
             if(comment == null)
             {
                 throw new ArgumentNullException(nameof(comment));
             }
-            if(userId <= 0)
-            {
-                throw new ArgumentNullException(nameof(userId));
-            }
-            comment.UserId = userId;
+            //if(userId <= 0)
+            //{
+            //    throw new ArgumentNullException(nameof(userId));
+            //}
+            //comment.UserId = userId;
             _context.Comments.Add(comment);
         }
 
