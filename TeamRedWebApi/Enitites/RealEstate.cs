@@ -15,7 +15,7 @@ namespace TeamRedProject.Enitites
 
         [Required]
         [MaxLength(50)]
-        public string Name { get; set; }
+        public string Title { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -26,14 +26,14 @@ namespace TeamRedProject.Enitites
 
         [Required]
         public int Type { get; set; }
-        public double rentingPrice { get; set; }
-        public double purchasePrice { get; set; }
-        public bool canBeRented { get; set; }
-        public bool canBePurchased { get; set; }
+        public int RentingPrice { get; set; }
+        public int PurchasePrice { get; set; }
+        public bool CanBeRented { get; set; }
+        public bool CanBePurchased { get; set; }
         public string Contact { get; set; }
 
         [Required]
-        public string yearOfConstruction { get; set; }
+        public string ConstructionYear { get; set; }
 
         [Required]
         public DateTimeOffset adCreated { get; set; }

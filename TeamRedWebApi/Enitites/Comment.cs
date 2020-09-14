@@ -16,7 +16,7 @@ namespace TeamRedProject.Enitites
         [MaxLength(1000)]
         public string Content { get; set; }
         [Required]
-        public DateTimeOffset CommentMade { get; set; }
+        public DateTimeOffset CreatedOn { get; set; }
 
         [ForeignKey("UserId")]
         public User Creator { get; set; }
