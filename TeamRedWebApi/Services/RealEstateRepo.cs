@@ -76,7 +76,7 @@ namespace TeamRedProject.Services
             if (take == null) take = "10";
             return _context.RealEstates.ToList<RealEstate>()
                 .OrderByDescending(o => o.adCreated)
-                .Skip(int.Parse(skip))
+                .Skip(int.Parse(skip))  
                 .Take(int.Parse(take));
         }
 
@@ -109,7 +109,7 @@ namespace TeamRedProject.Services
 
         public User GetUser(string userName)
         {
-           if(userName== null) throw new ArgumentNullException(nameof(userName));
+           if(userName == null) throw new ArgumentNullException(nameof(userName));
 
             return _context.Users.FirstOrDefault(a => a.Name == userName);
         }
