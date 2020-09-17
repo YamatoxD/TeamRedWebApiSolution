@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TeamRedProject.DbContexts;
+using TeamRedProject.Services;
 
 namespace TeamRedWebApi
 {
@@ -28,7 +30,10 @@ namespace TeamRedWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            //added automapper
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //added scope
+            services.AddScoped<IRealEstateRepo,RealEstateRepo>();
             //added database connection
             services.AddDbContext<RealEstateContext>(options =>
                 options.UseSqlServer(

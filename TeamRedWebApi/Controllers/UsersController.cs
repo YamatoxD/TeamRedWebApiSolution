@@ -32,6 +32,14 @@ namespace TeamRedWebApi.Controllers
             return Ok(_mapper.Map<IEnumerable<UserDto>>(userFromRepo));
         }
 
+        //Get api/Users
+        [HttpGet]
+        public ActionResult<IEnumerable<UserDto>> OnGet()
+        {
+            var userItem = userRepo.GetUsers();
+            return Ok(_mapper.Map<IEnumerable<UserDto>>(userItem));
+        }
+
         [HttpPut("{id}")]
         [Route("api/Users/Rate")]
         public IActionResult Rate(int id, [FromBody] UpdateUser user)
