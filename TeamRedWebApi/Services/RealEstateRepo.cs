@@ -107,11 +107,11 @@ namespace TeamRedProject.Services
             _context.Users.Remove(user);
         }
 
-        public User GetUser(string userName)
+        public User GetUser(string Name)
         {
-           if(userName == null) throw new ArgumentNullException(nameof(userName));
+          if(Name == null) throw new ArgumentNullException(nameof(Name));
 
-            return _context.Users.FirstOrDefault(a => a.Name == userName);
+            return _context.Users.FirstOrDefault(a => a.Name == Name);
         }
 
         public IEnumerable<User> GetUsers()

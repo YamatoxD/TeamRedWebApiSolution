@@ -19,8 +19,8 @@ namespace TeamRedProject.Enitites
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
-        public double averageRating { get; set; }
-        public List<RealEstate> realEstates { get; set; }
-        public List<Rating> ratings { get; set; }
+        public double AverageRating { get; set; }
+        public List<RealEstate> RealEstates { get; set; }
+        public List<Rating> Ratings { get; set; }
     }
 }

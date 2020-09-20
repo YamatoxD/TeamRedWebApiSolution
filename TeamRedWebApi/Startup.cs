@@ -29,11 +29,20 @@ namespace TeamRedWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddControllers();
             //added automapper
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             //added scope
             services.AddScoped<IRealEstateRepo,RealEstateRepo>();
+            //added policy
+            services.AddCors(policy =>
+            {
+                policy.AddPolicy("NewPolicy", opt =>
+                opt.AllowAnyOrigin().
+                AllowAnyMethod().
+                AllowAnyMethod());
+            });
             //added database connection
             services.AddDbContext<RealEstateContext>(options =>
                 options.UseSqlServer(
@@ -49,9 +58,9 @@ namespace TeamRedWebApi
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("NewPolicy");
 
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

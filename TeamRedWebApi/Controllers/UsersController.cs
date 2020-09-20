@@ -24,7 +24,8 @@ namespace TeamRedWebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("{realEstateId}", Name = "GetRealEstate")]
+        //[HttpGet("{realEstateId}", Name = "GetRealEstate")]
+        [HttpGet("{userName}")]
         [Route("api/Users/{userName}")]
         public IActionResult GetUser(string userName)
         {

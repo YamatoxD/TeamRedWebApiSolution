@@ -10,8 +10,8 @@ using TeamRedProject.DbContexts;
 namespace TeamRedWebApi.Migrations
 {
     [DbContext(typeof(RealEstateContext))]
-    [Migration("20200917214322_initlize")]
-    partial class initlize
+    [Migration("20200918122634_MyFirstMigration")]
+    partial class MyFirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -129,6 +129,9 @@ namespace TeamRedWebApi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<double>("AverageRating")
+                        .HasColumnType("float");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(150)")
@@ -142,9 +145,6 @@ namespace TeamRedWebApi.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("averageRating")
-                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -163,14 +163,14 @@ namespace TeamRedWebApi.Migrations
             modelBuilder.Entity("TeamRedProject.Enitites.Rating", b =>
                 {
                     b.HasOne("TeamRedProject.Enitites.User", "Rater")
-                        .WithMany("ratings")
+                        .WithMany("Ratings")
                         .HasForeignKey("RaterId");
                 });
 
             modelBuilder.Entity("TeamRedProject.Enitites.RealEstate", b =>
                 {
                     b.HasOne("TeamRedProject.Enitites.User", "Creator")
-                        .WithMany("realEstates")
+                        .WithMany("RealEstates")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

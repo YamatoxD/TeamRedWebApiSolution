@@ -127,6 +127,9 @@ namespace TeamRedWebApi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<double>("AverageRating")
+                        .HasColumnType("float");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(150)")
@@ -140,9 +143,6 @@ namespace TeamRedWebApi.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("averageRating")
-                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -161,14 +161,14 @@ namespace TeamRedWebApi.Migrations
             modelBuilder.Entity("TeamRedProject.Enitites.Rating", b =>
                 {
                     b.HasOne("TeamRedProject.Enitites.User", "Rater")
-                        .WithMany("ratings")
+                        .WithMany("Ratings")
                         .HasForeignKey("RaterId");
                 });
 
             modelBuilder.Entity("TeamRedProject.Enitites.RealEstate", b =>
                 {
                     b.HasOne("TeamRedProject.Enitites.User", "Creator")
-                        .WithMany("realEstates")
+                        .WithMany("RealEstates")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

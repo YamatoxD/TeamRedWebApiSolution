@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TeamRedWebApi.Migrations
 {
-    public partial class initlize : Migration
+    public partial class MyFirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,7 @@ namespace TeamRedWebApi.Migrations
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Email = table.Column<string>(maxLength: 150, nullable: false),
                     Password = table.Column<string>(nullable: false),
-                    averageRating = table.Column<double>(nullable: false)
+                    AverageRating = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
