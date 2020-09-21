@@ -9,6 +9,10 @@ namespace TeamRedProject.DbContexts
 {
     public class RealEstateContext : DbContext
     {
+        public RealEstateContext()
+        {
+        }
+
         public RealEstateContext(DbContextOptions<RealEstateContext> options)
             : base(options)
         {

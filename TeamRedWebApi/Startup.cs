@@ -39,7 +39,9 @@ namespace TeamRedWebApi
             services.AddIdentityCore<IdentityUser>(options => 
             {
                 options.SignIn.RequireConfirmedEmail = true;
-            }).AddEntityFrameworkStores<RealEstateContext>();
+            })
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<RealEstateContext>();
 
             services.AddControllers();
         }
