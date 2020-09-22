@@ -18,9 +18,24 @@ namespace TeamRedProject.Enitites
         [Required]
         public DateTimeOffset CommentMade { get; set; }
 
+        [Required]
+        [ForeignKey("RealEstateId")]
+        public RealEstate RealEstate { get; set; }
+
+        public int RealEstateId { get; set; }
+
+        [Required]
         [ForeignKey("UserId")]
         public User Creator { get; set; }
 
+        [Required]
         public int UserId { get; set; }
+
+        [ForeignKey("CommentId")]
+        public Comment Commented { get; set; }
+
+        public int CommentId { get; set; }
+
+
     }
 }
