@@ -30,6 +30,8 @@ namespace TeamRedWebApi.Controllers
             this._context = context;
         }
 
+        // Roles är inte implementerade ännu. 
+        // Vilken som hälst kan använda detta genom localhost:5000/api/Users/Admin/GetAllUsers
         [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("api/Users/Admin/GetAllUsers")]
