@@ -24,12 +24,21 @@ namespace TeamRedWebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("{realEstateId}", Name = "GetRealEstate")]
+        //[HttpGet("{realEstateId}", Name = "GetRealEstate")]
+        [HttpGet("{userName}")]
         [Route("api/Users/{userName}")]
         public IActionResult GetUser(string userName)
         {
             var userFromRepo = userRepo.GetUser(userName);
             return Ok(_mapper.Map<IEnumerable<UserDto>>(userFromRepo));
+        }
+
+        //Get api/Users
+        [HttpGet]
+        public ActionResult<IEnumerable<UserDto>> OnGet()
+        {
+            var userItem = userRepo.GetUsers();
+            return Ok(_mapper.Map<IEnumerable<UserDto>>(userItem));
         }
 
         [HttpPut("{id}")]
