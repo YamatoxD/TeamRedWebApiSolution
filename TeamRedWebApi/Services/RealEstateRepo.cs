@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using TeamRedProject.DbContexts;
 using TeamRedProject.Enitites;
@@ -19,17 +23,13 @@ namespace TeamRedProject.Services
 
         //Realestate
         #region
-        public void AddRealEstate(RealEstate realEstate)
-        {
-            //if(userId <= 0)
-            //{
-            //    throw new ArgumentNullException(nameof(userId));
-            //}
-            if(realEstate == null)
+        public void AddRealEstate(int userid, RealEstate realEstate)
+        { 
+            if (realEstate == null)
             {
                 throw new ArgumentNullException(nameof(realEstate));
             }
-            //realEstate.UserId = userId;
+            realEstate.UserId = userid;
             _context.RealEstates.Add(realEstate);
         }
 
@@ -169,6 +169,7 @@ namespace TeamRedProject.Services
             return _context.Comments.Where(r => r.UserId == userId);
         }
 
+        //behöver fixas
         public IEnumerable<Comment> GetComments(int realEstateId, string skip, string take)
         {
             if (realEstateId <= 0)
@@ -178,7 +179,7 @@ namespace TeamRedProject.Services
 
             if (skip == null) skip = "0";
             if (take == null) take = "10";
-            return _context.Comments.ToList<Comment>()
+            return _context.Comments.ToList<Comment>()/*.Where(r=>r.)*/
                 .OrderByDescending(o => o.CreatedOn)
                 .Skip(int.Parse(skip))
                 .Take(int.Parse(take));
@@ -198,17 +199,16 @@ namespace TeamRedProject.Services
                 .Take(int.Parse(take));
         }
 
-        public void AddComment(Comment comment)
+        public void AddComment(string username, Comment comment)
         {
             if(comment == null)
             {
                 throw new ArgumentNullException(nameof(comment));
             }
-            //if(userId <= 0)
-            //{
-            //    throw new ArgumentNullException(nameof(userId));
-            //}
-            //comment.UserId = userId;
+            var user = GetUser(username);
+            if(user==null) throw new ArgumentNullException(nameof(user));
+
+            comment.UserId = user.Id;
             _context.Comments.Add(comment);
         }
 
@@ -244,6 +244,26 @@ namespace TeamRedProject.Services
             {
                 // dispose resources when needed
             }
+        }
+
+        public string AuthenticateUser(string name, string password)
+        {
+            var user = _context.Users.Where(a => a.Name == name && a.Password == password).FirstOrDefault();
+            if (user == null) return null;
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenKey = Encoding.ASCII.GetBytes("this is my custom Secret key for authnetication");
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, name)
+                }),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }

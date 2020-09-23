@@ -30,25 +30,21 @@ namespace TeamRedWebApi.Controllers
             this._context = context;
         }
 
-        // Roles är inte implementerade ännu. 
-        // Vilken som hälst kan använda detta genom localhost:5000/api/Users/Admin/GetAllUsers
-        [Authorize(Roles = "Admin")]
-        [HttpGet]
-        [Route("api/Users/Admin/GetAllUsers")]
-        public List<User> GetAllUsers()
+        [HttpGet()]
+        public IActionResult GetUser()
         {
-            return _context.Users.ToList();
+            var userFromRepo = userRepo.GetUsers();
+            return Ok(_mapper.Map<IEnumerable<UserDto>>(userFromRepo));
         }
-
         //[HttpGet("{realEstateId}", Name = "GetRealEstate")]
         [HttpGet("{userName}")]
-        [Route("api/Users/{userName}")]
+
         public IActionResult GetUser(string userName)
         {
             var userFromRepo = userRepo.GetUser(userName);
             return Ok(_mapper.Map<IEnumerable<UserDto>>(userFromRepo));
         }
-
+        
         //Get api/Users
         [HttpGet]
         public ActionResult<IEnumerable<UserDto>> OnGet()
@@ -76,8 +72,7 @@ namespace TeamRedWebApi.Controllers
             //    // return error message if there was an exception
             //    return BadRequest(new { message = ex.Message });
             //}
-
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
     }
 }

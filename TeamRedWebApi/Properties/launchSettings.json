@@ -15,7 +15,8 @@
       "launchUrl": "api/RealEstates",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:51044"
     },
     "TeamRedWebApi": {
       "commandName": "Project",

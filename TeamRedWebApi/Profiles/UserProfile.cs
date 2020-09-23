@@ -13,7 +13,7 @@ namespace TeamRedWebApi.Profiles
         public UserProfile()
         {
             CreateMap<User, UserDto>();
-           // CreateMap<CreateUserDto, User>();
+            CreateMap<CreateUserDto, User>();
             CreateMap<UpdateUser, User>();
 
         }
