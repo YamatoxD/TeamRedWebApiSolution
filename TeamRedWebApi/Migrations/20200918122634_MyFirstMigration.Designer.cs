@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamRedProject.DbContexts;
 
 namespace TeamRedWebApi.Migrations
 {
     [DbContext(typeof(RealEstateContext))]
-    partial class RealEstateContextModelSnapshot : ModelSnapshot
+    [Migration("20200918122634_MyFirstMigration")]
+    partial class MyFirstMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,7 +132,6 @@ namespace TeamRedWebApi.Migrations
                     b.Property<double>("AverageRating")
                         .HasColumnType("float");
 
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(150)")
@@ -144,7 +145,6 @@ namespace TeamRedWebApi.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
 
                     b.HasKey("Id");
 
