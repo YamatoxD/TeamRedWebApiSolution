@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeamRedProject.Enitites;
@@ -38,14 +39,19 @@ namespace TeamRedWebApi.Controllers
 
             if (realEstateFromRepo == null) return NotFound();
 
-            return Ok(_mapper.Map<RealEstateDto>(realEstateFromRepo));
+            if (User.Identity.IsAuthenticated) return Ok(_mapper.Map<RealEstateDetailsPrivateDto>(realEstateFromRepo));
+
+            return Ok(_mapper.Map<RealEstateDetailsDto>(realEstateFromRepo));
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult<RealEstateDto> CreateRealEstate(CreateRealEstateDto realEstate)
         {
+            var user = realEstateRepo.GetUser(User.Identity.Name);
+
             var realEstateEntity = _mapper.Map<RealEstate>(realEstate);
-            realEstateRepo.AddRealEstate(realEstateEntity);
+            realEstateRepo.AddRealEstate(user.Id, realEstateEntity);
             realEstateRepo.Save();
 
             var realEstateToReturn = _mapper.Map<RealEstateDto>(realEstateEntity);

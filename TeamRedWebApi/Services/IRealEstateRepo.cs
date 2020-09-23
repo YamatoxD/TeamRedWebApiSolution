@@ -12,7 +12,7 @@ namespace TeamRedProject.Services
         #region
         IEnumerable<RealEstate> GetRealEstates(int userId);
         RealEstate GetRealEstate(int realEstateId);
-        void AddRealEstate(RealEstate realEstate);
+        void AddRealEstate(int userid, RealEstate realEstate);
         void UpdateRealEstate(RealEstate realEstate);
         void DeleteRealEstate(RealEstate realEstate);
         IEnumerable<RealEstate> GetRealEstates(string skip, string take);
@@ -35,10 +35,12 @@ namespace TeamRedProject.Services
         IEnumerable<Comment> GetComments(int userId);
         IEnumerable<Comment> GetComments(int realEstateId, string skip, string take);
         IEnumerable<Comment> GetCommentsFromUser(string userName, string skip, string take);
-        void AddComment(Comment comment);
+        void AddComment(string username, Comment comment);
         void UpdateComment(Comment comment);
         void DeleteComment(Comment comment);
         #endregion
+
+        string AuthenticateUser(string name, string password);
 
         bool Save();
     }

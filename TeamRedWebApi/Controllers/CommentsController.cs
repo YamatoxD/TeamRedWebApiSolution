@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeamRedProject.Enitites;
@@ -11,6 +12,7 @@ using TeamRedWebApi.Models.CommentModel;
 
 namespace TeamRedWebApi.Controllers
 {
+    [Authorize]
     [Route("api/Comments")]
     [ApiController]
     public class CommentsController : ControllerBase
@@ -34,9 +36,9 @@ namespace TeamRedWebApi.Controllers
             return Ok(_mapper.Map<IEnumerable<CommentDto>>(commentsFromRepo));
         }
 
-        [HttpGet("{userName}", Name = "GetCommentFromUser")]
+        [HttpGet("{userName}", Name = "GetComments")]
         [Route("api/Comments/ByUser/{userName}")]
-        public ActionResult<IEnumerable<CommentDto>> GetCommentFromUser(string userName,
+        public ActionResult<IEnumerable<CommentDto>> GetComments(string userName,
                             [FromQuery] string skip = "", [FromQuery] string take = "10")
         {
             var commentsFromRepo = commentRepo.GetCommentsFromUser(userName, skip, take);
@@ -48,11 +50,11 @@ namespace TeamRedWebApi.Controllers
         public ActionResult<CommentDto> CreateComment(CreateCommentDto comment)
         {
             var commentEntity = _mapper.Map<Comment>(comment);
-            commentRepo.AddComment(commentEntity);
+            commentRepo.AddComment(User.Identity.Name,commentEntity);
             commentRepo.Save();
 
             var commentToReturn = _mapper.Map<CommentDto>(commentEntity);
-            return CreatedAtRoute("GetRealEstate",
+            return CreatedAtRoute("GetComments",
                 new { userName = commentToReturn.UserName }, commentToReturn);
         }
     }
