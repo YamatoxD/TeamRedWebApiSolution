@@ -26,17 +26,36 @@ namespace IdentityExample.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public async Task<IActionResult> Login()
+        [HttpGet(Name = "Login")]
+        public IActionResult LoginGet()
         {
-            var result = await signInMgr.PasswordSignInAsync("TestUser2", "Test123!", false, false);
-            if (result.Succeeded)
+            return View("Login");
+        }
+
+        [HttpPost(Name = "Login")]
+        public async Task<IActionResult> LoginPost(string username, string password)
+        {
+            // TestUser2
+            // Test123!
+
+            try
             {
-                return RedirectToAction("Index", "Home");
+                var result = await signInMgr.PasswordSignInAsync(username, password, false, false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.Result = "result is: " + result.ToString();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ViewBag.Result = "result is: " + result.ToString();
+                throw ex;
             }
+
+            
             return View();
         }
 
@@ -63,6 +82,18 @@ namespace IdentityExample.Controllers
                 ViewBag.Message = ex.Message;
             }
             return View();
+        }
+
+
+        public async Task<IActionResult> DeleteUser()
+        {
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            IdentityUser user = await userMgr.GetUserAsync(currentUser);
+
+            await Logout();
+            
+            await userMgr.DeleteAsync(user);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

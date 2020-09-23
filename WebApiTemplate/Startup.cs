@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using IdentityExample.Data;
+using WebApiTemplate.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace IdentityExample
+namespace WebApiTemplate
 {
     public class Startup
     {
@@ -27,21 +27,11 @@ namespace IdentityExample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //string conString =
-            //    ConfigurationExtensions
-            //    .GetConnectionString(this.Configuration, "DefaultConnection");
-
-            string conString = "Server=(localdb)\\mssqllocaldb;Database=aspnet-IdentityExample-1F0A197D-0573-4F93-8DF9-91AF12EB2AC2;Trusted_Connection=True;MultipleActiveResultSets=true";
-
-            services.AddDbContext<ApplicationDbContext>(options => 
-            {
-                options.UseSqlServer(conString);
-            });
-
-            services.AddDefaultIdentity<IdentityUser>(
-                options => options.SignIn.RequireConfirmedAccount = false)
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

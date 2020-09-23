@@ -21,15 +21,13 @@ namespace TeamRedWebApi.Controllers
         private readonly IRealEstateRepo userRepo;
         private readonly IMapper _mapper;
         private readonly RealEstateContext _context;
-        public UsersController(RealEstateContext context)
-        {
-            this._context = context;
-        }
 
-        public UsersController(IRealEstateRepo userRepo, IMapper mapper)
+        public UsersController(IRealEstateRepo userRepo, IMapper mapper, 
+            RealEstateContext context)
         {
             this.userRepo = userRepo;
-            _mapper = mapper;
+            this._mapper = mapper;
+            this._context = context;
         }
 
         [Authorize(Roles = "Admin")]
