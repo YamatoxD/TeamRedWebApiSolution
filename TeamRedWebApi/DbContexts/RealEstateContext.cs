@@ -304,6 +304,5 @@ namespace TeamRedProject.DbContexts
                 );
 
         }
-
     }
 }

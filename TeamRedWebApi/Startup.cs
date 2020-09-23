@@ -12,8 +12,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using TeamRedProject.Enitites;
 using TeamRedProject.DbContexts;
 using TeamRedProject.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace TeamRedWebApi
 {
@@ -29,7 +32,13 @@ namespace TeamRedWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            //services.AddIdentityCore<IdentityUser>(options => 
+            //{
+            //    options.SignIn.RequireConfirmedEmail = true;
+            //})
+            //    .AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<RealEstateContext>();
+
             services.AddControllers();
             //added automapper
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -61,6 +70,8 @@ namespace TeamRedWebApi
             app.UseCors("NewPolicy");
 
             app.UseRouting();
+          
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

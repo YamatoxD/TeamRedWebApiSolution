@@ -130,6 +130,7 @@ namespace TeamRedWebApi.Migrations
                     b.Property<double>("AverageRating")
                         .HasColumnType("float");
 
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(150)")
@@ -143,6 +144,7 @@ namespace TeamRedWebApi.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
 
                     b.HasKey("Id");
 

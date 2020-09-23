@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using TeamRedProject.DbContexts;
 using TeamRedProject.Enitites;
 using TeamRedProject.Services;
 using TeamRedWebApi.Models.UserModel;
@@ -17,11 +20,22 @@ namespace TeamRedWebApi.Controllers
     {
         private readonly IRealEstateRepo userRepo;
         private readonly IMapper _mapper;
+        private readonly RealEstateContext _context;
 
-        public UsersController(IRealEstateRepo userRepo, IMapper mapper)
+        public UsersController(IRealEstateRepo userRepo, IMapper mapper, 
+            RealEstateContext context)
         {
             this.userRepo = userRepo;
-            _mapper = mapper;
+            this._mapper = mapper;
+            this._context = context;
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        [Route("api/Users/Admin/GetAllUsers")]
+        public List<User> GetAllUsers()
+        {
+            return _context.Users.ToList();
         }
 
         //[HttpGet("{realEstateId}", Name = "GetRealEstate")]
