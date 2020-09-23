@@ -25,12 +25,21 @@ namespace TeamRedWebApi.Controllers
             _mapper = mapper;
         }
 
+
+        [HttpGet()]
+        public ActionResult<IEnumerable<RealEstateDto>> GetRealEstates()
+        {
+            var realEstateFromRepo = realEstateRepo.GetRealEstates("0", "10");
+            return Ok(_mapper.Map<IEnumerable<RealEstateDto>>(realEstateFromRepo));
+        }
+
+        /*
         [HttpGet()]
         public ActionResult<IEnumerable<RealEstateDto>> GetRealEstates([FromQuery] string skip = "", [FromQuery] string take = "10")
         {
             var realEstateFromRepo = realEstateRepo.GetRealEstates(skip, take);
             return Ok(_mapper.Map<IEnumerable<RealEstateDto>>(realEstateFromRepo));
-        }
+        }*/
 
         [HttpGet("{realEstateId}", Name = "GetRealEstates")]
         public IActionResult GetRealEstates(int realEstateId)

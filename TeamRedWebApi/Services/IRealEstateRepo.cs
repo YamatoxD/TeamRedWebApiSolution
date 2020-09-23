@@ -21,6 +21,7 @@ namespace TeamRedProject.Services
         //User
         #region
         IEnumerable<User> GetUsers();
+
         User GetUser(string userName);
         IEnumerable<User> GetUsers(IEnumerable<int> userIds);
         void AddUser(User user);
