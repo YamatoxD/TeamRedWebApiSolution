@@ -8,6 +8,8 @@ namespace TeamRedProject.Enitites
 {
     public class User
     {
+
+
         [Required]
         [Key]
         public int Id { get; set; }
@@ -19,7 +21,8 @@ namespace TeamRedProject.Enitites
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
-        defaultConnection
+        //defaultConnection
+
         public double? AverageRating { get; set; }
         public List<RealEstate> RealEstates { get; set; }
         public List<Rating> Ratings { get; set; }

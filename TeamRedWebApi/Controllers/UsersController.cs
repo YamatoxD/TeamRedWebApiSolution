@@ -22,7 +22,7 @@ namespace TeamRedWebApi.Controllers
         private readonly IMapper _mapper;
         private readonly RealEstateContext _context;
 
-        public UsersController(IRealEstateRepo userRepo, IMapper mapper, 
+        public UsersController(IRealEstateRepo userRepo, IMapper mapper,
             RealEstateContext context)
         {
             this.userRepo = userRepo;
@@ -44,7 +44,7 @@ namespace TeamRedWebApi.Controllers
             var userFromRepo = userRepo.GetUser(userName);
             return Ok(_mapper.Map<IEnumerable<UserDto>>(userFromRepo));
         }
-        
+
         //Get api/Users
         [HttpGet]
         public ActionResult<IEnumerable<UserDto>> OnGet()
@@ -72,7 +72,9 @@ namespace TeamRedWebApi.Controllers
             //    // return error message if there was an exception
             //    return BadRequest(new { message = ex.Message });
             //}
-        //    return NoContent();
-        //}
+            //    return NoContent();
+            //}
+            return null;
+        }
     }
 }

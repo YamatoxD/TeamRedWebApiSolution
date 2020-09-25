@@ -26,9 +26,9 @@ namespace TeamRedProject.DbContexts
                 Name = "Jesper Eriksson",
                 Email = "Jesperceriksson@outlook.com",
                 Password = "uYEBjhai938/¤(#&",
-                ratings = null,
-                realEstates = null,
-                averageRating = null
+                Ratings = null,
+                RealEstates = null,
+                AverageRating = null
             };
             User user2 = new User()
             {
@@ -36,9 +36,9 @@ namespace TeamRedProject.DbContexts
                 Name = "Johan Karlsson",
                 Email = "JohanKarlsson@outlook.com",
                 Password = "sfsdifhdsofdsh/¤(#&",
-                ratings = null,
-                realEstates = null,
-                averageRating = null
+                Ratings = null,
+                RealEstates = null,
+                AverageRating = null
             };
             User user3 = new User()
             {
@@ -46,9 +46,9 @@ namespace TeamRedProject.DbContexts
                 Name = "Felix Alexandersson",
                 Email = "FelixAlexandersson@outlook.com",
                 Password = "dsadasdasfg/¤(#&",
-                ratings = null,
-                realEstates = null,
-                averageRating = null
+                Ratings = null,
+                RealEstates = null,
+                AverageRating = null
             };
             User user4 = new User()
             {
@@ -56,9 +56,9 @@ namespace TeamRedProject.DbContexts
                 Name = "Erik Olofsson",
                 Email = "ErikOlofsson@gmail.com",
                 Password = "sfisdfiub(T(/¤(#&",
-                ratings = null,
-                realEstates = null,
-                averageRating = null
+                Ratings = null,
+                RealEstates = null,
+                AverageRating = null
             };
             User user5 = new User()
             {
@@ -66,9 +66,9 @@ namespace TeamRedProject.DbContexts
                 Name = "Nicklas Andreasson",
                 Email = "NicklasAndreasson@protonmail.com",
                 Password = "dasdnsafba//¤(#&",
-                ratings = null,
-                realEstates = null,
-                averageRating = null
+                Ratings = null,
+                RealEstates = null,
+                AverageRating = null
             };
             User user6 = new User()
             {
@@ -76,9 +76,9 @@ namespace TeamRedProject.DbContexts
                 Name = "Yngve Opendal",
                 Email = "YngveOpendal@outlook.com",
                 Password = "daskdjbasdkasb/¤(#&",
-                ratings = null,
-                realEstates = null,
-                averageRating = null
+                Ratings = null,
+                RealEstates = null,
+                AverageRating = null
             };
             User user7 = new User()
             {
@@ -86,9 +86,9 @@ namespace TeamRedProject.DbContexts
                 Name = "Andreas Svensson",
                 Email = "AndreasSvensson@swipnet.se",
                 Password = "dsfsjfdsf8/¤(#&",
-                ratings = null,
-                realEstates = null,
-                averageRating = null
+                Ratings = null,
+                RealEstates = null,
+                AverageRating = null
             };
 
             RealEstate RealEstate1 = new RealEstate()
@@ -214,7 +214,7 @@ namespace TeamRedProject.DbContexts
                 RealEstateId = RealEstate1.Id,
                 Creator = user,
                 UserId = user.Id,
-                CommentMade = DateTime.Now,
+                CreatedOn = DateTime.Now,
                 Content = "This is a lovely home."
             };
 
@@ -225,7 +225,7 @@ namespace TeamRedProject.DbContexts
                 RealEstateId = RealEstate2.Id,
                 Creator = user2,
                 UserId = user2.Id,
-                CommentMade = new DateTime(2003, 3, 5),
+                CreatedOn = new DateTime(2003, 3, 5),
                 Content = "How much is this home?"
             };
             Comment comment3 = new Comment()
@@ -237,7 +237,7 @@ namespace TeamRedProject.DbContexts
                 UserId = user3.Id,
                 Commented = comment2,
                 CommentId = comment2.Id,
-                CommentMade = new DateTime(2003, 3, 6),
+                CreatedOn = new DateTime(2003, 3, 6),
                 Content = "The premises is $100000"
             };
             Comment comment4 = new Comment()
@@ -247,7 +247,7 @@ namespace TeamRedProject.DbContexts
                 RealEstateId = RealEstate3.Id,
                 Creator = user3,
                 UserId = user3.Id,
-                CommentMade = new DateTime(2005, 06, 02)
+                CreatedOn = new DateTime(2005, 06, 02)
             };
             Comment comment5 = new Comment()
             {
@@ -256,7 +256,7 @@ namespace TeamRedProject.DbContexts
                 RealEstateId = RealEstate3.Id,
                 Creator = user4,
                 UserId = user4.Id,
-                CommentMade = new DateTime(2005, 06, 02)
+                CreatedOn = new DateTime(2005, 06, 02)
             };
             Comment comment6 = new Comment()
             {
@@ -265,7 +265,7 @@ namespace TeamRedProject.DbContexts
                 RealEstateId = RealEstate4.Id,
                 Creator = user5,
                 UserId = user5.Id,
-                CommentMade = new DateTime(2006, 05, 12)
+                CreatedOn = new DateTime(2006, 05, 12)
             };
             Comment comment7 = new Comment()
             {
@@ -274,7 +274,7 @@ namespace TeamRedProject.DbContexts
                 RealEstateId = RealEstate5.Id,
                 Creator = user6,
                 UserId = user6.Id,
-                CommentMade = new DateTime(2007, 10, 19)
+                CreatedOn = new DateTime(2007, 10, 19)
             };
 
 
