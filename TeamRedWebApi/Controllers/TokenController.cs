@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using TeamRedProject.Models;
 using TeamRedProject.Services;
 
 namespace TeamRedWebApi.Controllers

@@ -9,6 +9,12 @@ namespace TeamRedProject.Enitites
 {
     public class RealEstate
     {
+        internal bool canBePurchased;
+        internal int rentingPrice;
+        internal bool canBeRented;
+        internal int purchasePrice;
+        internal string yearOfConstruction;
+
         [Required]
         [Key]
         public int Id { get; set; }
@@ -42,6 +48,8 @@ namespace TeamRedProject.Enitites
         public User Creator { get; set; }
 
         public int UserId { get; set; }
-
+        public string Name { get; internal set; }
+        public string AverageRating { get; set; }
+        public string Ratings { get; set; }
     }
 }

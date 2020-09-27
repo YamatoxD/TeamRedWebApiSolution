@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
+using TeamRedProject.DbContexts;
+using TeamRedProject.Models;
 using TeamRedProject.Enitites;
 using TeamRedProject.Services;
 using TeamRedWebApi.Models.UserModel;

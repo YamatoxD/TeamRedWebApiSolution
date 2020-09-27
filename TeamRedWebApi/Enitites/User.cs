@@ -8,6 +8,8 @@ namespace TeamRedProject.Enitites
 {
     public class User
     {
+
+
         [Required]
         [Key]
         public int Id { get; set; }
