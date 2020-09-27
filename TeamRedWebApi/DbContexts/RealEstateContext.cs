@@ -94,118 +94,118 @@ namespace TeamRedProject.DbContexts
             RealEstate RealEstate1 = new RealEstate()
             {
                 Id = 1,
-                Name = "My lovely home",
+                Title = "My lovely home",
                 Address = "Ostindiegatan 14B",
                 adCreated = DateTime.Now,
-                canBePurchased = true,
-                canBeRented = true,
-                rentingPrice = 1000,
-                purchasePrice = 100000,
+                CanBePurchased = true,
+                CanBeRented = true,
+                RentingPrice = 1000,
+                PurchasePrice = 100000,
                 Contact = "0703357725",
                 Description = "A lovely home for a lovely family",
                 Type = 2,
                 UserId = user.Id,
-                yearOfConstruction = "1935"
+                ConstructionYear = "1935"
 
             };
             RealEstate RealEstate2 = new RealEstate()
             {
                 Id = 2,
-                Name = "My cool home",
+                Title = "My cool home",
                 Address = "aspelundgatan 9",
                 adCreated = DateTime.Now,
-                canBePurchased = true,
-                canBeRented = true,
-                rentingPrice = 1000,
-                purchasePrice = 100000,
+                CanBePurchased = true,
+                CanBeRented = true,
+                RentingPrice = 1000,
+                PurchasePrice = 100000,
                 Contact = "0709765456",
                 Description = "A lovely home for a lovely family",
                 Type = 2,
                 UserId = user2.Id,
-                yearOfConstruction = "1956"
+                ConstructionYear = "1956"
 
             };
             RealEstate RealEstate3 = new RealEstate()
             {
                 Id = 3,
-                Name = "My nice home",
+                Title = "My nice home",
                 Address = "Falsbogatan 18",
                 adCreated = DateTime.Now,
-                canBePurchased = true,
-                canBeRented = true,
-                rentingPrice = 1000,
-                purchasePrice = 100000,
+                CanBePurchased = true,
+                CanBeRented = true,
+                RentingPrice = 1000,
+                PurchasePrice = 100000,
                 Contact = "0709987656",
                 Description = "A lovely home for a lovely family",
                 Type = 1,
                 UserId = user3.Id,
-                yearOfConstruction = "1999"
+                ConstructionYear = "1999"
 
             };
             RealEstate RealEstate4 = new RealEstate()
             {
                 Id = 4,
-                Name = "My nice home",
+                Title = "My nice home",
                 Address = "Höglundsgatan 15",
                 adCreated = DateTime.Now,
-                canBePurchased = true,
-                canBeRented = true,
-                rentingPrice = 1000,
-                purchasePrice = 100000,
+                CanBePurchased = true,
+                CanBeRented = true,
+                RentingPrice = 1000,
+                PurchasePrice = 100000,
                 Contact = "0705647356",
                 Description = "A lovely home for a lovely family",
                 Type = 2,
                 UserId = user3.Id,
-                yearOfConstruction = "1934"
+                ConstructionYear = "1934"
             };
             RealEstate RealEstate5 = new RealEstate()
             {
                 Id = 5,
-                Name = "My nice bungalow",
+                Title = "My nice bungalow",
                 Address = "Mariaplan 5",
                 adCreated = DateTime.Now,
-                canBePurchased = true,
-                canBeRented = true,
-                rentingPrice = 1000,
-                purchasePrice = 100000,
+                CanBePurchased = true,
+                CanBeRented = true,
+                RentingPrice = 1000,
+                PurchasePrice = 100000,
                 Contact = "0705647356",
                 Description = "A lovely home for a lovely family",
                 Type = 2,
                 UserId = user4.Id,
-                yearOfConstruction = "1987"
+                ConstructionYear = "1987"
             };
             RealEstate RealEstate6 = new RealEstate()
             {
                 Id = 6,
-                Name = "My nice bungalow",
+                Title = "My nice bungalow",
                 Address = "Svanebäcksgatan 5",
                 adCreated = DateTime.Now,
-                canBePurchased = true,
-                canBeRented = true,
-                rentingPrice = 1000,
-                purchasePrice = 100000,
+                CanBePurchased = true,
+                CanBeRented = true,
+                RentingPrice = 1000,
+                PurchasePrice = 100000,
                 Contact = "0705647356",
                 Description = "A lovely home for a lovely family",
                 Type = 1,
                 UserId = user5.Id,
-                yearOfConstruction = "1876"
+                ConstructionYear = "1876"
             };
 
             RealEstate RealEstate7 = new RealEstate()
             {
                 Id = 7,
-                Name = "My nice bungalow",
+                Title = "My nice bungalow",
                 Address = "Fastmansvägen 89",
                 adCreated = DateTime.Now,
-                canBePurchased = true,
-                canBeRented = true,
-                rentingPrice = 1000,
-                purchasePrice = 100000,
+                CanBePurchased = true,
+                CanBeRented = true,
+                RentingPrice = 1000,
+                PurchasePrice = 100000,
                 Contact = "0705647356",
                 Description = "A lovely home for a lovely family",
                 Type = 2,
                 UserId = user6.Id,
-                yearOfConstruction = "1657"
+                ConstructionYear = "1657"
             };
             Comment comment1 = new Comment()
             {

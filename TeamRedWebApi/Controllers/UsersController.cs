@@ -53,28 +53,28 @@ namespace TeamRedWebApi.Controllers
             return Ok(_mapper.Map<IEnumerable<UserDto>>(userItem));
         }
 
-        [HttpPut("{id}")]
-        [Route("api/Users/Rate")]
-        public IActionResult Rate(int id, [FromBody] UpdateUser user)
-        {
-            // map model to entity and set id
-            var updateUser = _mapper.Map<User>(user);
-            updateUser.Id = id;
-
-            //try
-            //{
-            //    // update user 
-            //    userRepo.Update(user, user.);
-            //    return Ok();
-            //}
-            //catch (AppException ex)
-            //{
-            //    // return error message if there was an exception
-            //    return BadRequest(new { message = ex.Message });
-            //}
-            //    return NoContent();
-            //}
-            return null;
-        }
+      //  [HttpPut("{id}")]
+      //  [Route("api/Users/Rate")]
+      //  public IActionResult Rate(int id, [FromBody] UpdateUser user)
+      //  {
+      //      // map model to entity and set id
+      //      var updateUser = _mapper.Map<User>(user);
+      //      updateUser.Id = id;
+      //
+      //      //try
+      //      //{
+      //      //    // update user 
+      //      //    userRepo.Update(user, user.);
+      //      //    return Ok();
+      //      //}
+      //      //catch (AppException ex)
+      //      //{
+      //      //    // return error message if there was an exception
+      //      //    return BadRequest(new { message = ex.Message });
+      //      //}
+      //      //    return NoContent();
+      //      //}
+      //      return null;
+      // }
     }
 }
