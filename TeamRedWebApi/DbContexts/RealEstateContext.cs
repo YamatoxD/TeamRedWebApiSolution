@@ -9,10 +9,8 @@ namespace TeamRedProject.DbContexts
 {
     public class RealEstateContext : DbContext
     {
-        public RealEstateContext(DbContextOptions<RealEstateContext> options)
-            : base(options)
-        {
-        }
+        public RealEstateContext(DbContextOptions<RealEstateContext> options) : base(options) { }
+
         public DbSet<User> Users { get; set; }
         public DbSet<RealEstate> RealEstates { get; set; }
         public DbSet<Rating> Ratings { get; set; }
@@ -24,6 +22,7 @@ namespace TeamRedProject.DbContexts
             {
                 Id = 1,
                 Name = "Jesper Eriksson",
+                UserName = "Yamato",
                 Email = "Jesperceriksson@outlook.com",
                 Password = "uYEBjhai938/¤(#&",
                 Ratings = null,
@@ -34,6 +33,7 @@ namespace TeamRedProject.DbContexts
             {
                 Id = 2,
                 Name = "Johan Karlsson",
+                UserName = "Majken",
                 Email = "JohanKarlsson@outlook.com",
                 Password = "sfsdifhdsofdsh/¤(#&",
                 Ratings = null,
@@ -44,6 +44,7 @@ namespace TeamRedProject.DbContexts
             {
                 Id = 3,
                 Name = "Felix Alexandersson",
+                UserName = "Falex",
                 Email = "FelixAlexandersson@outlook.com",
                 Password = "dsadasdasfg/¤(#&",
                 Ratings = null,
@@ -54,6 +55,7 @@ namespace TeamRedProject.DbContexts
             {
                 Id = 4,
                 Name = "Erik Olofsson",
+                UserName = "Eriko",
                 Email = "ErikOlofsson@gmail.com",
                 Password = "sfisdfiub(T(/¤(#&",
                 Ratings = null,
@@ -64,6 +66,7 @@ namespace TeamRedProject.DbContexts
             {
                 Id = 5,
                 Name = "Nicklas Andreasson",
+                UserName = "Nickare",
                 Email = "NicklasAndreasson@protonmail.com",
                 Password = "dasdnsafba//¤(#&",
                 Ratings = null,
@@ -74,6 +77,7 @@ namespace TeamRedProject.DbContexts
             {
                 Id = 6,
                 Name = "Yngve Opendal",
+                UserName = "Yngvisen",
                 Email = "YngveOpendal@outlook.com",
                 Password = "daskdjbasdkasb/¤(#&",
                 Ratings = null,
@@ -84,6 +88,7 @@ namespace TeamRedProject.DbContexts
             {
                 Id = 7,
                 Name = "Andreas Svensson",
+                UserName = "mafakka",
                 Email = "AndreasSvensson@swipnet.se",
                 Password = "dsfsjfdsf8/¤(#&",
                 Ratings = null,
@@ -96,7 +101,7 @@ namespace TeamRedProject.DbContexts
                 Id = 1,
                 Title = "My lovely home",
                 Address = "Ostindiegatan 14B",
-                adCreated = DateTime.Now,
+                AdCreated = DateTime.Now,
                 CanBePurchased = true,
                 CanBeRented = true,
                 RentingPrice = 1000,
@@ -113,7 +118,7 @@ namespace TeamRedProject.DbContexts
                 Id = 2,
                 Title = "My cool home",
                 Address = "aspelundgatan 9",
-                adCreated = DateTime.Now,
+                AdCreated = DateTime.Now,
                 CanBePurchased = true,
                 CanBeRented = true,
                 RentingPrice = 1000,
@@ -130,7 +135,7 @@ namespace TeamRedProject.DbContexts
                 Id = 3,
                 Title = "My nice home",
                 Address = "Falsbogatan 18",
-                adCreated = DateTime.Now,
+                AdCreated = DateTime.Now,
                 CanBePurchased = true,
                 CanBeRented = true,
                 RentingPrice = 1000,
@@ -147,7 +152,7 @@ namespace TeamRedProject.DbContexts
                 Id = 4,
                 Title = "My nice home",
                 Address = "Höglundsgatan 15",
-                adCreated = DateTime.Now,
+                AdCreated = DateTime.Now,
                 CanBePurchased = true,
                 CanBeRented = true,
                 RentingPrice = 1000,
@@ -163,7 +168,7 @@ namespace TeamRedProject.DbContexts
                 Id = 5,
                 Title = "My nice bungalow",
                 Address = "Mariaplan 5",
-                adCreated = DateTime.Now,
+                AdCreated = DateTime.Now,
                 CanBePurchased = true,
                 CanBeRented = true,
                 RentingPrice = 1000,
@@ -179,7 +184,7 @@ namespace TeamRedProject.DbContexts
                 Id = 6,
                 Title = "My nice bungalow",
                 Address = "Svanebäcksgatan 5",
-                adCreated = DateTime.Now,
+                AdCreated = DateTime.Now,
                 CanBePurchased = true,
                 CanBeRented = true,
                 RentingPrice = 1000,
@@ -196,7 +201,7 @@ namespace TeamRedProject.DbContexts
                 Id = 7,
                 Title = "My nice bungalow",
                 Address = "Fastmansvägen 89",
-                adCreated = DateTime.Now,
+                AdCreated = DateTime.Now,
                 CanBePurchased = true,
                 CanBeRented = true,
                 RentingPrice = 1000,
@@ -229,7 +234,6 @@ namespace TeamRedProject.DbContexts
                 Id = 3,
                 RealEstateId = RealEstate2.Id,
                 UserId = user3.Id,
-                CommentId = comment2.Id,
                 CreatedOn = new DateTime(2003, 3, 6),
                 Content = "The premises is $100000"
             };
@@ -270,7 +274,11 @@ namespace TeamRedProject.DbContexts
             modelBuilder.Entity<User>().HasData(
                 user,
                 user2,
-                user3
+                user3,
+                user4,
+                user5,
+                user6,
+                user7
                 );
             modelBuilder.Entity<RealEstate>().HasData(
                 RealEstate1,

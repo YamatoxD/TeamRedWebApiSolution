@@ -21,21 +21,18 @@ namespace TeamRedProject.Enitites
         [ForeignKey("RealEstateId")]
         public RealEstate RealEstate { get; set; }
 
-        [Required]
-        public int RealEstateId { get; set; }
+        public int? RealEstateId { get; set; }
 
         [ForeignKey("UserId")]
         public User Creator { get; set; }
 
-        [Required]
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
-        [ForeignKey("CommentId")]
-        public Comment Commented { get; set; }
-
-        [Required]
-        public int CommentId { get; set; }
-
+       // [ForeignKey("CommentId")]
+       // public Comment Commented { get; set; }
+       //
+       // public int? CommentId { get; set; }
+       //
 
     }
 }

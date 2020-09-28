@@ -31,18 +31,18 @@ namespace TeamRedWebApi.Controllers
         }
 
         [HttpGet()]
-        public IActionResult GetUser()
+        public ActionResult<IEnumerable<UserDto>> GetUser()
         {
             var userFromRepo = userRepo.GetUsers();
             return Ok(_mapper.Map<IEnumerable<UserDto>>(userFromRepo));
         }
         //[HttpGet("{realEstateId}", Name = "GetRealEstate")]
-        [HttpGet("{userName}")]
+        [HttpGet("{userName}", Name = "GetUser")]
 
         public IActionResult GetUser(string userName)
         {
             var userFromRepo = userRepo.GetUser(userName);
-            return Ok(_mapper.Map<IEnumerable<UserDto>>(userFromRepo));
+            return Ok(_mapper.Map<UserDto>(userFromRepo));
         }
 
         //Get api/Users

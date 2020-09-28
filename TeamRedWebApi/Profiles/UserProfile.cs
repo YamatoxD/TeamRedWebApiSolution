@@ -12,10 +12,17 @@ namespace TeamRedWebApi.Profiles
     {
         public UserProfile()
         {
-            CreateMap<User, UserDto>();
-            CreateMap<CreateUserDto, User>();
-            CreateMap<UpdateUser, User>();
+            CreateMap<User, UserDto>().ForMember(
+                    dest => dest.RealEstates,
+                    opt => opt.MapFrom(src => src.RealEstates.Count())).ForMember(
+                    dest => dest.Comments,
+                    opt => opt.MapFrom(src => src.Comments.Count()));
 
+            CreateMap<UserDto, User>();
+
+            CreateMap<CreateUserDto, User>();
+
+            CreateMap<UpdateUser, User>();
         }
     }
 }
