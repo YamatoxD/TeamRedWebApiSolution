@@ -34,7 +34,7 @@ namespace TeamRedProject.Services
         #region
         Comment GetComment(int commentId, int userId);
         IEnumerable<Comment> GetComments(int userId);
-        IEnumerable<Comment> GetComments(int realEstateId, string skip, string take);
+        IEnumerable<Comment> GetCommentsFromRealEstate(int realEstateId, string skip, string take);
         IEnumerable<Comment> GetCommentsFromUser(string userName, string skip, string take);
         void AddComment(string username, Comment comment);
         void UpdateComment(Comment comment);

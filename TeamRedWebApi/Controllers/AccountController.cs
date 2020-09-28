@@ -33,11 +33,9 @@ namespace TeamRedWebApi.Controllers
         }
 
         [HttpPost()]
-        public IActionResult Regisetr(CreateUserDto createUser)
+        public IActionResult Register(CreateUserDto createUser)
         {
             if (!ModelState.IsValid) return BadRequest();
-
-            if (createUser.Password != createUser.ConfirmPassword) return BadRequest();
 
             var userEntity = _mapper.Map<User>(createUser);
             userRepo.AddUser(userEntity);

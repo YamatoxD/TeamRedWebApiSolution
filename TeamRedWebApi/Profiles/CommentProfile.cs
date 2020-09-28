@@ -12,7 +12,9 @@ namespace TeamRedWebApi.Profiles
     {
         public CommentProfile()
         {
-            CreateMap<Comment, CommentDto>();
+            CreateMap<Comment, CommentDto>().ForMember(
+                    dest => dest.UserName,
+                    opt => opt.MapFrom(src => $"{src.Creator.UserName}"));
             CreateMap<CreateCommentDto, Comment>();
         }
     }

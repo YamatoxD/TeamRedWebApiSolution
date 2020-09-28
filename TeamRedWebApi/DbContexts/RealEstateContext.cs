@@ -21,7 +21,6 @@ namespace TeamRedProject.DbContexts
             User user = new User()
             {
                 Id = 1,
-                Name = "Jesper Eriksson",
                 UserName = "Yamato",
                 Email = "Jesperceriksson@outlook.com",
                 Password = "uYEBjhai938/¤(#&",
@@ -32,7 +31,6 @@ namespace TeamRedProject.DbContexts
             User user2 = new User()
             {
                 Id = 2,
-                Name = "Johan Karlsson",
                 UserName = "Majken",
                 Email = "JohanKarlsson@outlook.com",
                 Password = "sfsdifhdsofdsh/¤(#&",
@@ -43,7 +41,6 @@ namespace TeamRedProject.DbContexts
             User user3 = new User()
             {
                 Id = 3,
-                Name = "Felix Alexandersson",
                 UserName = "Falex",
                 Email = "FelixAlexandersson@outlook.com",
                 Password = "dsadasdasfg/¤(#&",
@@ -54,7 +51,6 @@ namespace TeamRedProject.DbContexts
             User user4 = new User()
             {
                 Id = 4,
-                Name = "Erik Olofsson",
                 UserName = "Eriko",
                 Email = "ErikOlofsson@gmail.com",
                 Password = "sfisdfiub(T(/¤(#&",
@@ -65,7 +61,6 @@ namespace TeamRedProject.DbContexts
             User user5 = new User()
             {
                 Id = 5,
-                Name = "Nicklas Andreasson",
                 UserName = "Nickare",
                 Email = "NicklasAndreasson@protonmail.com",
                 Password = "dasdnsafba//¤(#&",
@@ -76,7 +71,6 @@ namespace TeamRedProject.DbContexts
             User user6 = new User()
             {
                 Id = 6,
-                Name = "Yngve Opendal",
                 UserName = "Yngvisen",
                 Email = "YngveOpendal@outlook.com",
                 Password = "daskdjbasdkasb/¤(#&",
@@ -87,7 +81,6 @@ namespace TeamRedProject.DbContexts
             User user7 = new User()
             {
                 Id = 7,
-                Name = "Andreas Svensson",
                 UserName = "mafakka",
                 Email = "AndreasSvensson@swipnet.se",
                 Password = "dsfsjfdsf8/¤(#&",
