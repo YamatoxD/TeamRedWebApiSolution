@@ -270,7 +270,11 @@ namespace TeamRedProject.DbContexts
             modelBuilder.Entity<User>().HasData(
                 user,
                 user2,
-                user3
+                user3,
+                user4,
+                user5,
+                user6,
+                user7
                 );
             modelBuilder.Entity<RealEstate>().HasData(
                 RealEstate1,
