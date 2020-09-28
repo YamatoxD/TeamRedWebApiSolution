@@ -210,9 +210,7 @@ namespace TeamRedProject.DbContexts
             Comment comment1 = new Comment()
             {
                 Id = 1,
-                RealEstate = RealEstate1,
                 RealEstateId = RealEstate1.Id,
-                Creator = user,
                 UserId = user.Id,
                 CreatedOn = DateTime.Now,
                 Content = "This is a lovely home."
@@ -221,9 +219,7 @@ namespace TeamRedProject.DbContexts
             Comment comment2 = new Comment()
             {
                 Id = 2,
-                RealEstate = RealEstate2,
                 RealEstateId = RealEstate2.Id,
-                Creator = user2,
                 UserId = user2.Id,
                 CreatedOn = new DateTime(2003, 3, 5),
                 Content = "How much is this home?"
@@ -231,11 +227,8 @@ namespace TeamRedProject.DbContexts
             Comment comment3 = new Comment()
             {
                 Id = 3,
-                RealEstate = RealEstate2,
                 RealEstateId = RealEstate2.Id,
-                Creator = user3,
                 UserId = user3.Id,
-                Commented = comment2,
                 CommentId = comment2.Id,
                 CreatedOn = new DateTime(2003, 3, 6),
                 Content = "The premises is $100000"
@@ -243,38 +236,34 @@ namespace TeamRedProject.DbContexts
             Comment comment4 = new Comment()
             {
                 Id = 4,
-                RealEstate = RealEstate3,
                 RealEstateId = RealEstate3.Id,
-                Creator = user3,
                 UserId = user3.Id,
-                CreatedOn = new DateTime(2005, 06, 02)
+                CreatedOn = new DateTime(2005, 06, 02),
+                Content = "Test1"
             };
             Comment comment5 = new Comment()
             {
                 Id = 5,
-                RealEstate = RealEstate3,
                 RealEstateId = RealEstate3.Id,
-                Creator = user4,
                 UserId = user4.Id,
-                CreatedOn = new DateTime(2005, 06, 02)
+                CreatedOn = new DateTime(2005, 06, 02),
+                Content = "Test2"
             };
             Comment comment6 = new Comment()
             {
                 Id = 6,
-                RealEstate = RealEstate4,
                 RealEstateId = RealEstate4.Id,
-                Creator = user5,
                 UserId = user5.Id,
-                CreatedOn = new DateTime(2006, 05, 12)
+                CreatedOn = new DateTime(2006, 05, 12),
+                Content = "Test3"
             };
             Comment comment7 = new Comment()
             {
                 Id = 7,
-                RealEstate = RealEstate5,
                 RealEstateId = RealEstate5.Id,
-                Creator = user6,
                 UserId = user6.Id,
-                CreatedOn = new DateTime(2007, 10, 19)
+                CreatedOn = new DateTime(2007, 10, 19),
+                Content = "Test4"
             };
 
 
