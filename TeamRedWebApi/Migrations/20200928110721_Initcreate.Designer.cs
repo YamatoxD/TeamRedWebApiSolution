@@ -10,8 +10,8 @@ using TeamRedProject.DbContexts;
 namespace TeamRedWebApi.Migrations
 {
     [DbContext(typeof(RealEstateContext))]
-    [Migration("20200928100349_initmigration")]
-    partial class initmigration
+    [Migration("20200928110721_Initcreate")]
+    partial class Initcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,7 +55,7 @@ namespace TeamRedWebApi.Migrations
                         {
                             Id = 1,
                             Content = "This is a lovely home.",
-                            CreatedOn = new DateTimeOffset(new DateTime(2020, 9, 28, 12, 3, 49, 185, DateTimeKind.Unspecified).AddTicks(7633), new TimeSpan(0, 2, 0, 0, 0)),
+                            CreatedOn = new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(7277), new TimeSpan(0, 2, 0, 0, 0)),
                             RealEstateId = 1,
                             UserId = 1
                         },
@@ -194,7 +194,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 1,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 12, 3, 49, 183, DateTimeKind.Unspecified).AddTicks(729), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 389, DateTimeKind.Unspecified).AddTicks(9892), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Ostindiegatan 14B",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -210,7 +210,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 2,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 12, 3, 49, 185, DateTimeKind.Unspecified).AddTicks(5523), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5275), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "aspelundgatan 9",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -226,7 +226,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 3,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 12, 3, 49, 185, DateTimeKind.Unspecified).AddTicks(5660), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5423), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Falsbogatan 18",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -242,7 +242,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 4,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 12, 3, 49, 185, DateTimeKind.Unspecified).AddTicks(5671), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5436), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Höglundsgatan 15",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -258,7 +258,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 5,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 12, 3, 49, 185, DateTimeKind.Unspecified).AddTicks(5678), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5444), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Mariaplan 5",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -274,7 +274,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 6,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 12, 3, 49, 185, DateTimeKind.Unspecified).AddTicks(5685), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5452), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Svanebäcksgatan 5",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -290,7 +290,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 7,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 12, 3, 49, 185, DateTimeKind.Unspecified).AddTicks(5738), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5458), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Fastmansvägen 89",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -320,11 +320,6 @@ namespace TeamRedWebApi.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -343,7 +338,6 @@ namespace TeamRedWebApi.Migrations
                         {
                             Id = 1,
                             Email = "Jesperceriksson@outlook.com",
-                            Name = "Jesper Eriksson",
                             Password = "uYEBjhai938/¤(#&",
                             UserName = "Yamato"
                         },
@@ -351,7 +345,6 @@ namespace TeamRedWebApi.Migrations
                         {
                             Id = 2,
                             Email = "JohanKarlsson@outlook.com",
-                            Name = "Johan Karlsson",
                             Password = "sfsdifhdsofdsh/¤(#&",
                             UserName = "Majken"
                         },
@@ -359,7 +352,6 @@ namespace TeamRedWebApi.Migrations
                         {
                             Id = 3,
                             Email = "FelixAlexandersson@outlook.com",
-                            Name = "Felix Alexandersson",
                             Password = "dsadasdasfg/¤(#&",
                             UserName = "Falex"
                         },
@@ -367,7 +359,6 @@ namespace TeamRedWebApi.Migrations
                         {
                             Id = 4,
                             Email = "ErikOlofsson@gmail.com",
-                            Name = "Erik Olofsson",
                             Password = "sfisdfiub(T(/¤(#&",
                             UserName = "Eriko"
                         },
@@ -375,7 +366,6 @@ namespace TeamRedWebApi.Migrations
                         {
                             Id = 5,
                             Email = "NicklasAndreasson@protonmail.com",
-                            Name = "Nicklas Andreasson",
                             Password = "dasdnsafba//¤(#&",
                             UserName = "Nickare"
                         },
@@ -383,7 +373,6 @@ namespace TeamRedWebApi.Migrations
                         {
                             Id = 6,
                             Email = "YngveOpendal@outlook.com",
-                            Name = "Yngve Opendal",
                             Password = "daskdjbasdkasb/¤(#&",
                             UserName = "Yngvisen"
                         },
@@ -391,7 +380,6 @@ namespace TeamRedWebApi.Migrations
                         {
                             Id = 7,
                             Email = "AndreasSvensson@swipnet.se",
-                            Name = "Andreas Svensson",
                             Password = "dsfsjfdsf8/¤(#&",
                             UserName = "mafakka"
                         });

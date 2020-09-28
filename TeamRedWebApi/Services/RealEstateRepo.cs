@@ -127,7 +127,7 @@ namespace TeamRedProject.Services
             }
 
             return _context.Users.Where(a => userIds.Contains(a.Id))
-                 .OrderBy(a => a.Name)
+                 .OrderBy(a => a.UserName)
                  .ToList();
         }
 
@@ -188,7 +188,7 @@ namespace TeamRedProject.Services
         public IEnumerable<Comment> GetCommentsFromUser(string userName, string skip, string take)
         {
 
-            var user = _context.Users.Where(x => x.Name == userName).FirstOrDefault();
+            var user = _context.Users.Where(x => x.UserName == userName).FirstOrDefault();
             
             if (skip == null) skip = "0";
             if (take == null) take = "10";
@@ -248,7 +248,7 @@ namespace TeamRedProject.Services
 
         public string AuthenticateUser(string name, string password)
         {
-            var user = _context.Users.Where(a => a.Name == name && a.Password == password).FirstOrDefault();
+            var user = _context.Users.Where(a => a.UserName == name && a.Password == password).FirstOrDefault();
             if (user == null) return null;
 
             var tokenHandler = new JwtSecurityTokenHandler();
