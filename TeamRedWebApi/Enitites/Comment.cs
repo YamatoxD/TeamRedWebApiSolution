@@ -18,13 +18,12 @@ namespace TeamRedProject.Enitites
         [Required]
         public DateTimeOffset CreatedOn { get; set; }
 
-        [Required]
         [ForeignKey("RealEstateId")]
         public RealEstate RealEstate { get; set; }
 
+        [Required]
         public int RealEstateId { get; set; }
 
-        [Required]
         [ForeignKey("UserId")]
         public User Creator { get; set; }
 
@@ -34,6 +33,7 @@ namespace TeamRedProject.Enitites
         [ForeignKey("CommentId")]
         public Comment Commented { get; set; }
 
+        [Required]
         public int CommentId { get; set; }
 
 

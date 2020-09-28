@@ -24,5 +24,6 @@ namespace TeamRedProject.Enitites
         public double? AverageRating { get; set; }
         public List<RealEstate> RealEstates { get; set; }
         public List<Rating> Ratings { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }
