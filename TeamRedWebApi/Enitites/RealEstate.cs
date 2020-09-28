@@ -9,12 +9,6 @@ namespace TeamRedProject.Enitites
 {
     public class RealEstate
     {
-        internal bool canBePurchased;
-        internal int rentingPrice;
-        internal bool canBeRented;
-        internal int purchasePrice;
-        internal string yearOfConstruction;
-
         [Required]
         [Key]
         public int Id { get; set; }
@@ -42,14 +36,15 @@ namespace TeamRedProject.Enitites
         public string ConstructionYear { get; set; }
 
         [Required]
-        public DateTimeOffset adCreated { get; set; }
+        public DateTimeOffset AdCreated { get; set; }
 
         [ForeignKey("UserId")]
         public User Creator { get; set; }
 
+        [Required]
         public int UserId { get; set; }
-        public string Name { get; internal set; }
         public string AverageRating { get; set; }
         public string Ratings { get; set; }
+        public List<Comment> Comments { get; set; } = new List<Comment>();
     }
 }
