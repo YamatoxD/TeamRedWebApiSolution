@@ -219,6 +219,7 @@ namespace TeamRedProject.DbContexts
                 Id = 2,
                 RealEstateId = RealEstate2.Id,
                 UserId = user2.Id,
+                CommentId = comment1.Id,
                 CreatedOn = new DateTime(2003, 3, 5),
                 Content = "How much is this home?"
             };

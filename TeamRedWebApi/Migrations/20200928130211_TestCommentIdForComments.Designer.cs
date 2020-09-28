@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamRedProject.DbContexts;
 
 namespace TeamRedWebApi.Migrations
 {
     [DbContext(typeof(RealEstateContext))]
-    partial class RealEstateContextModelSnapshot : ModelSnapshot
+    [Migration("20200928130211_TestCommentIdForComments")]
+    partial class TestCommentIdForComments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,14 +60,13 @@ namespace TeamRedWebApi.Migrations
                         {
                             Id = 1,
                             Content = "This is a lovely home.",
-                            CreatedOn = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(3463), new TimeSpan(0, 2, 0, 0, 0)),
+                            CreatedOn = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 2, 11, 466, DateTimeKind.Unspecified).AddTicks(4488), new TimeSpan(0, 2, 0, 0, 0)),
                             RealEstateId = 1,
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            CommentId = 1,
                             Content = "How much is this home?",
                             CreatedOn = new DateTimeOffset(new DateTime(2003, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)),
                             RealEstateId = 2,
@@ -198,7 +199,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 1,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 425, DateTimeKind.Unspecified).AddTicks(6829), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 2, 11, 463, DateTimeKind.Unspecified).AddTicks(4847), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Ostindiegatan 14B",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -214,7 +215,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 2,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1345), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 2, 11, 466, DateTimeKind.Unspecified).AddTicks(2061), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "aspelundgatan 9",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -230,7 +231,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 3,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1456), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 2, 11, 466, DateTimeKind.Unspecified).AddTicks(2234), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Falsbogatan 18",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -246,7 +247,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 4,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1466), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 2, 11, 466, DateTimeKind.Unspecified).AddTicks(2245), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Höglundsgatan 15",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -262,7 +263,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 5,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1473), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 2, 11, 466, DateTimeKind.Unspecified).AddTicks(2253), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Mariaplan 5",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -278,7 +279,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 6,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1479), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 2, 11, 466, DateTimeKind.Unspecified).AddTicks(2261), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Svanebäcksgatan 5",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -294,7 +295,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 7,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1486), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 2, 11, 466, DateTimeKind.Unspecified).AddTicks(2268), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Fastmansvägen 89",
                             CanBePurchased = true,
                             CanBeRented = true,

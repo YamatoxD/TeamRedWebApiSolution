@@ -28,11 +28,11 @@ namespace TeamRedProject.Enitites
 
         public int? UserId { get; set; }
 
-       // [ForeignKey("CommentId")]
-       // public Comment Commented { get; set; }
-       //
-       // public int? CommentId { get; set; }
-       //
+        [ForeignKey("CommentId")]
+        public Comment Commented { get; set; }
+       
+        public int? CommentId { get; set; }
+       
 
     }
 }
