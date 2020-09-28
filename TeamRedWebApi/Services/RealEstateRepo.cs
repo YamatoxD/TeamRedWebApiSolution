@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,9 @@ namespace TeamRedProject.Services
                 throw new ArgumentNullException(nameof(realEstate));
             }
             realEstate.UserId = userid;
+            realEstate.AdCreated = DateTime.Now;
+            if (realEstate.RentingPrice > 0) realEstate.CanBeRented = true;
+            if (realEstate.PurchasePrice > 0) realEstate.CanBePurchased = true;
             _context.RealEstates.Add(realEstate);
         }
 
@@ -54,7 +58,7 @@ namespace TeamRedProject.Services
             {
                 throw new ArgumentNullException(nameof(realEstateId));
             }
-            return _context.RealEstates
+            return _context.RealEstates.Include("Comments")
                 .Where(r =>r.Id == realEstateId).FirstOrDefault();
         }
 
@@ -72,8 +76,8 @@ namespace TeamRedProject.Services
 
         public IEnumerable<RealEstate> GetRealEstates(string skip, string take)
         {
-            if (skip == null) skip = "0";
-            if (take == null) take = "10";
+            if (skip == "") skip = "0";
+            if (take == "") take = "10";
             return _context.RealEstates.ToList<RealEstate>()
                 .OrderByDescending(o => o.AdCreated)
                 .Skip(int.Parse(skip))  
@@ -170,28 +174,31 @@ namespace TeamRedProject.Services
         }
 
         //behöver fixas
-        public IEnumerable<Comment> GetComments(int realEstateId, string skip, string take)
+        public IEnumerable<Comment> GetCommentsFromRealEstate(int realEstateId, string skip, string take)
         {
             if (realEstateId <= 0)
             {
                 throw new ArgumentNullException(nameof(realEstateId));
             }
 
-            if (skip == null) skip = "0";
-            if (take == null) take = "10";
-            return _context.Comments.ToList<Comment>()/*.Where(r=>r.)*/
+            if (skip == "") skip = "0";
+            if (take == "") take = "10";
+            return _context.Comments.Include("Creator")
+                .Where(r => r.RealEstateId == realEstateId)
                 .OrderByDescending(o => o.CreatedOn)
                 .Skip(int.Parse(skip))
-                .Take(int.Parse(take));
+                .Take(int.Parse(take)).ToList();
         }
-
         public IEnumerable<Comment> GetCommentsFromUser(string userName, string skip, string take)
         {
-
             var user = _context.Users.Where(x => x.UserName == userName).FirstOrDefault();
-            
-            if (skip == null) skip = "0";
-            if (take == null) take = "10";
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            if (skip == "") skip = "0";
+            if (take == "") take = "10";
             return _context.Comments.ToList<Comment>()
                 .Where(x => x.UserId == user.Id)
                 .OrderByDescending(o => o.CreatedOn)

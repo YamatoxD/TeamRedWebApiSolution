@@ -26,23 +26,19 @@ namespace TeamRedWebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet()]
-        [HttpHead]
-        [Route("api/Comments/{realEstateId}")]
+        [HttpGet("{realEstateId}")]
         public ActionResult<IEnumerable<CommentDto>> GetComments(int realEstateId,
                             [FromQuery] string skip = "", [FromQuery] string take = "10")
         {
-            var commentsFromRepo = commentRepo.GetComments(realEstateId, skip, take);
+            var commentsFromRepo = commentRepo.GetCommentsFromRealEstate(realEstateId, skip, take);
             return Ok(_mapper.Map<IEnumerable<CommentDto>>(commentsFromRepo));
         }
 
-        [HttpGet("{userName}", Name = "GetComments")]
-        [Route("api/Comments/ByUser/{userName}")]
+        [HttpGet("ByUser/{userName}", Name = "GetComments")]
         public ActionResult<IEnumerable<CommentDto>> GetComments(string userName,
                             [FromQuery] string skip = "", [FromQuery] string take = "10")
         {
             var commentsFromRepo = commentRepo.GetCommentsFromUser(userName, skip, take);
-
             return Ok(_mapper.Map<IEnumerable<CommentDto>>(commentsFromRepo));
         }
 
@@ -50,12 +46,13 @@ namespace TeamRedWebApi.Controllers
         public ActionResult<CommentDto> CreateComment(CreateCommentDto comment)
         {
             var commentEntity = _mapper.Map<Comment>(comment);
-            commentRepo.AddComment(User.Identity.Name,commentEntity);
+
+            commentRepo.AddComment(User.Identity.Name, commentEntity);
             commentRepo.Save();
 
             var commentToReturn = _mapper.Map<CommentDto>(commentEntity);
             return CreatedAtRoute("GetComments",
-                new { userName = commentToReturn.UserName }, commentToReturn);
+                new { realEstateId = comment.RealEstateId, userName = commentToReturn.UserName }, commentToReturn);
         }
     }
 }

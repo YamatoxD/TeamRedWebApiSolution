@@ -12,6 +12,6 @@ namespace TeamRedWebApi.Models.RealEstateModel
         public int RentingPrice { get; set; }
         public int PurchasePrice { get; set; }
         public bool CanBeRented { get; set; }
-        public bool CanBeBought { get; set; }
+        public bool CanBePurchased { get; set; }
     }
 }
