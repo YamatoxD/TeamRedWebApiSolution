@@ -41,13 +41,6 @@ namespace TeamRedWebApi.Controllers
             return Ok(_mapper.Map<UserDto>(userFromRepo));
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<UserDto>> OnGet()
-        {
-            var userItem = userRepo.GetUsers();
-            return Ok(_mapper.Map<IEnumerable<UserDto>>(userItem));
-        }
-
         [Authorize]
         [HttpPut("Rate")]
         public IActionResult Rate(UpdateUser user)
@@ -55,7 +48,8 @@ namespace TeamRedWebApi.Controllers
             var userFromRepo = userRepo.GetUser(user.UserId);
             if (userFromRepo == null) return NotFound();
 
-            userRepo.RateUser(User.Identity.Name, user.UserId, user.Value);
+            bool isValid = userRepo.RateUser(User.Identity.Name, user.UserId, user.Value);
+            if (!isValid) return BadRequest();
             userRepo.Save();
             return Ok();
         }
