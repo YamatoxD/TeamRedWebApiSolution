@@ -119,7 +119,7 @@ namespace TeamRedProject.Services
         }
         public User GetUser(int userid)
         {
-            return _context.Users.FirstOrDefault(a => a.Id == userid);
+            return _context.Users.Include("Ratings").FirstOrDefault(a => a.Id == userid);
         }
 
         public IEnumerable<User> GetUsers()
@@ -163,6 +163,7 @@ namespace TeamRedProject.Services
                 Ratings = value,
                 UserId = user.Id
             };
+
             _context.Ratings.Add(rate);
             user.AverageRating = user.Ratings.Average(x => x.Ratings);
             return true;
