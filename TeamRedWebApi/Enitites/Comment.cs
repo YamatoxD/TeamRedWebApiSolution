@@ -31,8 +31,6 @@ namespace TeamRedProject.Enitites
         [ForeignKey("CommentId")]
         public Comment Commented { get; set; }
        
-        public int? CommentId { get; set; }
-       
-
+        public int? CommentId { get; set; }      
     }
 }

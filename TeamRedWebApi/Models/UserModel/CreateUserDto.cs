@@ -10,11 +10,18 @@ namespace TeamRedWebApi.Models.UserModel
     {
         [Required]
         public string UserName { get; set; }
+
         [Required]
         public string Email { get; set; }
+
+        [MinLength(3, ErrorMessage = "Password length must be longer then 2")]
+        [Required(ErrorMessage = "Password is required")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Compare("Password", ErrorMessage = "Confirm password doesn't match, Type again !")]
+        [Required(ErrorMessage = "Confirm Password is required")]
+        [DataType(DataType.Password)]
+        [Compare("Password")]
         public string ConfirmPassword { get; set; }
     }
 }

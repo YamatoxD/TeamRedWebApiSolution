@@ -21,13 +21,14 @@ namespace TeamRedProject.Services
         //User
         #region
         IEnumerable<User> GetUsers();
-
         User GetUser(string userName);
+        User GetUser(int userId);
         IEnumerable<User> GetUsers(IEnumerable<int> userIds);
         void AddUser(User user);
         void DeleteUser(User user);
         void UpdateUser(User user);
         bool UserExists(int userId);
+        bool RateUser(string username, int userId, int value);
         #endregion
 
         //Comment

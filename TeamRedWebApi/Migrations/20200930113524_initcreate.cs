@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TeamRedWebApi.Migrations
 {
-    public partial class Initcreate : Migration
+    public partial class initcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,14 +30,14 @@ namespace TeamRedWebApi.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Ratings = table.Column<int>(nullable: false),
-                    RaterId = table.Column<int>(nullable: true)
+                    UserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ratings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Ratings_Users_RaterId",
-                        column: x => x.RaterId,
+                        name: "FK_Ratings_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -84,11 +84,18 @@ namespace TeamRedWebApi.Migrations
                     Content = table.Column<string>(maxLength: 1000, nullable: false),
                     CreatedOn = table.Column<DateTimeOffset>(nullable: false),
                     RealEstateId = table.Column<int>(nullable: true),
-                    UserId = table.Column<int>(nullable: true)
+                    UserId = table.Column<int>(nullable: true),
+                    CommentId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_Comments_CommentId",
+                        column: x => x.CommentId,
+                        principalTable: "Comments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Comments_RealEstates_RealEstateId",
                         column: x => x.RealEstateId,
@@ -122,28 +129,37 @@ namespace TeamRedWebApi.Migrations
                 columns: new[] { "Id", "AdCreated", "Address", "AverageRating", "CanBePurchased", "CanBeRented", "ConstructionYear", "Contact", "Description", "PurchasePrice", "Ratings", "RentingPrice", "Title", "Type", "UserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 389, DateTimeKind.Unspecified).AddTicks(9892), new TimeSpan(0, 2, 0, 0, 0)), "Ostindiegatan 14B", null, true, true, "1935", "0703357725", "A lovely home for a lovely family", 100000, null, 1000, "My lovely home", 2, 1 },
-                    { 2, new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5275), new TimeSpan(0, 2, 0, 0, 0)), "aspelundgatan 9", null, true, true, "1956", "0709765456", "A lovely home for a lovely family", 100000, null, 1000, "My cool home", 2, 2 },
-                    { 3, new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5423), new TimeSpan(0, 2, 0, 0, 0)), "Falsbogatan 18", null, true, true, "1999", "0709987656", "A lovely home for a lovely family", 100000, null, 1000, "My nice home", 1, 3 },
-                    { 4, new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5436), new TimeSpan(0, 2, 0, 0, 0)), "Höglundsgatan 15", null, true, true, "1934", "0705647356", "A lovely home for a lovely family", 100000, null, 1000, "My nice home", 2, 3 },
-                    { 5, new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5444), new TimeSpan(0, 2, 0, 0, 0)), "Mariaplan 5", null, true, true, "1987", "0705647356", "A lovely home for a lovely family", 100000, null, 1000, "My nice bungalow", 2, 4 },
-                    { 6, new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5452), new TimeSpan(0, 2, 0, 0, 0)), "Svanebäcksgatan 5", null, true, true, "1876", "0705647356", "A lovely home for a lovely family", 100000, null, 1000, "My nice bungalow", 1, 5 },
-                    { 7, new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(5458), new TimeSpan(0, 2, 0, 0, 0)), "Fastmansvägen 89", null, true, true, "1657", "0705647356", "A lovely home for a lovely family", 100000, null, 1000, "My nice bungalow", 2, 6 }
+                    { 1, new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 83, DateTimeKind.Unspecified).AddTicks(8717), new TimeSpan(0, 2, 0, 0, 0)), "Ostindiegatan 14B", null, true, true, "1935", "0703357725", "A lovely home for a lovely family", 100000, null, 1000, "My lovely home", 2, 1 },
+                    { 2, new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(4814), new TimeSpan(0, 2, 0, 0, 0)), "aspelundgatan 9", null, true, true, "1956", "0709765456", "A lovely home for a lovely family", 100000, null, 1000, "My cool home", 2, 2 },
+                    { 3, new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(5083), new TimeSpan(0, 2, 0, 0, 0)), "Falsbogatan 18", null, true, true, "1999", "0709987656", "A lovely home for a lovely family", 100000, null, 1000, "My nice home", 1, 3 },
+                    { 4, new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(5105), new TimeSpan(0, 2, 0, 0, 0)), "Höglundsgatan 15", null, true, true, "1934", "0705647356", "A lovely home for a lovely family", 100000, null, 1000, "My nice home", 2, 3 },
+                    { 5, new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(5117), new TimeSpan(0, 2, 0, 0, 0)), "Mariaplan 5", null, true, true, "1987", "0705647356", "A lovely home for a lovely family", 100000, null, 1000, "My nice bungalow", 2, 4 },
+                    { 6, new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(5130), new TimeSpan(0, 2, 0, 0, 0)), "Svanebäcksgatan 5", null, true, true, "1876", "0705647356", "A lovely home for a lovely family", 100000, null, 1000, "My nice bungalow", 1, 5 },
+                    { 7, new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(5146), new TimeSpan(0, 2, 0, 0, 0)), "Fastmansvägen 89", null, true, true, "1657", "0705647356", "A lovely home for a lovely family", 100000, null, 1000, "My nice bungalow", 2, 6 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Comments",
-                columns: new[] { "Id", "Content", "CreatedOn", "RealEstateId", "UserId" },
+                columns: new[] { "Id", "CommentId", "Content", "CreatedOn", "RealEstateId", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "This is a lovely home.", new DateTimeOffset(new DateTime(2020, 9, 28, 13, 7, 21, 392, DateTimeKind.Unspecified).AddTicks(7277), new TimeSpan(0, 2, 0, 0, 0)), 1, 1 },
-                    { 2, "How much is this home?", new DateTimeOffset(new DateTime(2003, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)), 2, 2 },
-                    { 3, "The premises is $100000", new DateTimeOffset(new DateTime(2003, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)), 2, 3 },
-                    { 4, "Test1", new DateTimeOffset(new DateTime(2005, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), 3, 3 },
-                    { 5, "Test2", new DateTimeOffset(new DateTime(2005, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), 3, 4 },
-                    { 6, "Test3", new DateTimeOffset(new DateTime(2006, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), 4, 5 },
-                    { 7, "Test4", new DateTimeOffset(new DateTime(2007, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), 5, 6 }
+                    { 1, null, "This is a lovely home.", new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(8047), new TimeSpan(0, 2, 0, 0, 0)), 1, 1 },
+                    { 3, null, "The premises is $100000", new DateTimeOffset(new DateTime(2003, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)), 2, 3 },
+                    { 4, null, "Test1", new DateTimeOffset(new DateTime(2005, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), 3, 3 },
+                    { 5, null, "Test2", new DateTimeOffset(new DateTime(2005, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), 3, 4 },
+                    { 6, null, "Test3", new DateTimeOffset(new DateTime(2006, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), 4, 5 },
+                    { 7, null, "Test4", new DateTimeOffset(new DateTime(2007, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), 5, 6 }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "Id", "CommentId", "Content", "CreatedOn", "RealEstateId", "UserId" },
+                values: new object[] { 2, 1, "How much is this home?", new DateTimeOffset(new DateTime(2003, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)), 2, 2 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_CommentId",
+                table: "Comments",
+                column: "CommentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_RealEstateId",
@@ -156,9 +172,9 @@ namespace TeamRedWebApi.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ratings_RaterId",
+                name: "IX_Ratings_UserId",
                 table: "Ratings",
-                column: "RaterId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RealEstates_UserId",

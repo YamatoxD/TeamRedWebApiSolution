@@ -58,7 +58,7 @@ namespace TeamRedWebApi.Migrations
                         {
                             Id = 1,
                             Content = "This is a lovely home.",
-                            CreatedOn = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(3463), new TimeSpan(0, 2, 0, 0, 0)),
+                            CreatedOn = new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(8047), new TimeSpan(0, 2, 0, 0, 0)),
                             RealEstateId = 1,
                             UserId = 1
                         },
@@ -120,15 +120,15 @@ namespace TeamRedWebApi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("RaterId")
+                    b.Property<int>("Ratings")
                         .HasColumnType("int");
 
-                    b.Property<int>("Ratings")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RaterId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Ratings");
                 });
@@ -198,7 +198,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 1,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 425, DateTimeKind.Unspecified).AddTicks(6829), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 83, DateTimeKind.Unspecified).AddTicks(8717), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Ostindiegatan 14B",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -214,7 +214,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 2,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1345), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(4814), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "aspelundgatan 9",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -230,7 +230,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 3,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1456), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(5083), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Falsbogatan 18",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -246,7 +246,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 4,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1466), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(5105), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Höglundsgatan 15",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -262,7 +262,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 5,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1473), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(5117), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Mariaplan 5",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -278,7 +278,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 6,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1479), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(5130), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Svanebäcksgatan 5",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -294,7 +294,7 @@ namespace TeamRedWebApi.Migrations
                         new
                         {
                             Id = 7,
-                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 28, 15, 3, 28, 428, DateTimeKind.Unspecified).AddTicks(1486), new TimeSpan(0, 2, 0, 0, 0)),
+                            AdCreated = new DateTimeOffset(new DateTime(2020, 9, 30, 13, 35, 24, 98, DateTimeKind.Unspecified).AddTicks(5146), new TimeSpan(0, 2, 0, 0, 0)),
                             Address = "Fastmansvägen 89",
                             CanBePurchased = true,
                             CanBeRented = true,
@@ -406,9 +406,9 @@ namespace TeamRedWebApi.Migrations
 
             modelBuilder.Entity("TeamRedProject.Enitites.Rating", b =>
                 {
-                    b.HasOne("TeamRedProject.Enitites.User", "Rater")
+                    b.HasOne("TeamRedProject.Enitites.User", "User")
                         .WithMany("Ratings")
-                        .HasForeignKey("RaterId");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("TeamRedProject.Enitites.RealEstate", b =>

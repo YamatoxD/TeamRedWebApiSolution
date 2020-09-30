@@ -20,14 +20,11 @@ namespace TeamRedWebApi.Controllers
     {
         private readonly IRealEstateRepo userRepo;
         private readonly IMapper _mapper;
-        private readonly RealEstateContext _context;
 
-        public UsersController(IRealEstateRepo userRepo, IMapper mapper,
-            RealEstateContext context)
+        public UsersController(IRealEstateRepo userRepo, IMapper mapper)
         {
             this.userRepo = userRepo;
             this._mapper = mapper;
-            this._context = context;
         }
 
         [HttpGet()]
@@ -36,16 +33,14 @@ namespace TeamRedWebApi.Controllers
             var userFromRepo = userRepo.GetUsers();
             return Ok(_mapper.Map<IEnumerable<UserDto>>(userFromRepo));
         }
-        //[HttpGet("{realEstateId}", Name = "GetRealEstate")]
-        [HttpGet("{userName}", Name = "GetUser")]
 
+        [HttpGet("{userName}", Name = "GetUser")]
         public IActionResult GetUser(string userName)
         {
             var userFromRepo = userRepo.GetUser(userName);
             return Ok(_mapper.Map<UserDto>(userFromRepo));
         }
 
-        //Get api/Users
         [HttpGet]
         public ActionResult<IEnumerable<UserDto>> OnGet()
         {
@@ -53,28 +48,16 @@ namespace TeamRedWebApi.Controllers
             return Ok(_mapper.Map<IEnumerable<UserDto>>(userItem));
         }
 
-      //  [HttpPut("{id}")]
-      //  [Route("api/Users/Rate")]
-      //  public IActionResult Rate(int id, [FromBody] UpdateUser user)
-      //  {
-      //      // map model to entity and set id
-      //      var updateUser = _mapper.Map<User>(user);
-      //      updateUser.Id = id;
-      //
-      //      //try
-      //      //{
-      //      //    // update user 
-      //      //    userRepo.Update(user, user.);
-      //      //    return Ok();
-      //      //}
-      //      //catch (AppException ex)
-      //      //{
-      //      //    // return error message if there was an exception
-      //      //    return BadRequest(new { message = ex.Message });
-      //      //}
-      //      //    return NoContent();
-      //      //}
-      //      return null;
-      // }
+        [Authorize]
+        [HttpPut("Rate")]
+        public IActionResult Rate(UpdateUser user)
+        {
+            var userFromRepo = userRepo.GetUser(user.UserId);
+            if (userFromRepo == null) return NotFound();
+
+            userRepo.RateUser(User.Identity.Name, user.UserId, user.Value);
+            userRepo.Save();
+            return Ok();
+        }
     }
 }

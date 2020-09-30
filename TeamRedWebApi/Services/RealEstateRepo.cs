@@ -117,6 +117,10 @@ namespace TeamRedProject.Services
 
             return _context.Users.FirstOrDefault(a => a.UserName == Name);
         }
+        public User GetUser(int userid)
+        {
+            return _context.Users.FirstOrDefault(a => a.Id == userid);
+        }
 
         public IEnumerable<User> GetUsers()
         {
@@ -143,6 +147,25 @@ namespace TeamRedProject.Services
             }
 
             return _context.Users.Any(a => a.Id == userId);
+        }
+
+        public bool RateUser(string username, int userId, int value)
+        {
+            var user = GetUser(userId);
+            var rater = GetUser(username);
+
+            if (user == null) return false;
+            if (rater == null) return false;
+            if (rater.Id == user.Id) return false;
+
+            Rating rate = new Rating
+            {
+                Ratings = value,
+                UserId = user.Id
+            };
+            _context.Ratings.Add(rate);
+            user.AverageRating = user.Ratings.Average(x => x.Ratings);
+            return true;
         }
         #endregion
 
