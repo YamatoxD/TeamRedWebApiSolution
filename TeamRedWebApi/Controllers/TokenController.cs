@@ -30,7 +30,12 @@ namespace TeamRedWebApi.Controllers
         {
             var token =  _realEstateRepo.AuthenticateUser(username, password);
             if (token == null) return Unauthorized();
-            return Ok(token);
+
+            return Ok(new
+            {
+                token = new JwtSecurityTokenHandler().WriteToken(token),
+                expires = token.ValidTo
+            });
         }
     }
 }

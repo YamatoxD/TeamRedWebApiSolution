@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using TeamRedProject.Enitites;
@@ -42,7 +43,7 @@ namespace TeamRedProject.Services
         void DeleteComment(Comment comment);
         #endregion
 
-        string AuthenticateUser(string name, string password);
+        JwtSecurityToken AuthenticateUser(string name, string password);
 
         bool Save();
     }

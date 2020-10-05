@@ -19,7 +19,7 @@ using TeamRedWebApi.Models.UserModel;
 
 namespace TeamRedWebApi.Controllers
 {
-    [Route("api/account/register")]
+    [Route("api/account")]
     [ApiController]
     public class AccountController : ControllerBase
     {
@@ -32,16 +32,39 @@ namespace TeamRedWebApi.Controllers
             this._mapper = mapper;
         }
 
+        [Route("register")]
         [HttpPost()]
         public IActionResult Register(CreateUserDto createUser)
         {
-            if (!ModelState.IsValid) return BadRequest();
+            if(createUser != null)
+            {
+                if (!ModelState.IsValid) return BadRequest($"{createUser.UserName} could not be added");
+                
+                var userEntity = _mapper.Map<User>(createUser);
+                userRepo.AddUser(userEntity);
+                userRepo.Save();
 
-            var userEntity = _mapper.Map<User>(createUser);
-            userRepo.AddUser(userEntity);
-            userRepo.Save();
+                return Ok($"{createUser.UserName} has been added");
+            }
 
-            return Ok();
+            return BadRequest("CreateUser Error");
+        }
+
+        [Route("login")]
+        [HttpPost]
+        public IActionResult Login(LoginUserDto user)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var token = userRepo.AuthenticateUser(user.UserName, user.Password);
+
+            return Ok(new
+            {
+                token = new JwtSecurityTokenHandler().WriteToken(token),
+                expires = token.ValidTo,
+                info = "login only used for auth just for now, will be changed later."
+            });
         }
     }
 }

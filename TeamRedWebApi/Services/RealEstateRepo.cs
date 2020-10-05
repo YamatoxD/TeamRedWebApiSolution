@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,13 @@ namespace TeamRedProject.Services
     public class RealEstateRepo : IRealEstateRepo, IDisposable
     {
         private readonly RealEstateContext _context;
+        private IConfiguration Configuration { get; }
 
-        public RealEstateRepo(RealEstateContext context)
+        public RealEstateRepo(RealEstateContext context, IConfiguration configuration)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            this.Configuration = configuration;
+
         }
 
         //Realestate
@@ -277,13 +281,17 @@ namespace TeamRedProject.Services
             }
         }
 
-        public string AuthenticateUser(string name, string password)
+        public JwtSecurityToken AuthenticateUser(string name, string password)
         {
             var user = _context.Users.Where(a => a.UserName == name && a.Password == password).FirstOrDefault();
             if (user == null) return null;
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var tokenKey = Encoding.ASCII.GetBytes("this is my custom Secret key for authnetication");
+            
+            /*"this is my custom Secret key for authnetication"*/
+            var key = Configuration["JWT:Secret"];
+            var tokenKey = Encoding.ASCII.GetBytes(key);
+
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
@@ -293,8 +301,10 @@ namespace TeamRedProject.Services
                 Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
             };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            //var token = tokenHandler.CreateToken(tokenDescriptor);
+            var token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
+
+            return token; /*tokenHandler.WriteToken(token);*/
         }
     }
 }

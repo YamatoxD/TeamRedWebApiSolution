@@ -37,6 +37,7 @@ namespace TeamRedWebApi.Controllers
         [HttpGet("{userName}", Name = "GetUser")]
         public IActionResult GetUser(string userName)
         {
+            // example: localhost:5000/api/Users/test1
             var userFromRepo = userRepo.GetUser(userName);
             return Ok(_mapper.Map<UserDto>(userFromRepo));
         }
