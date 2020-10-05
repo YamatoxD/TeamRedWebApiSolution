@@ -17,7 +17,7 @@ namespace TeamRedProject.Services
         void AddRealEstate(int userid, RealEstate realEstate);
         void UpdateRealEstate(RealEstate realEstate);
         void DeleteRealEstate(RealEstate realEstate);
-        IEnumerable<RealEstate> GetRealEstates(string skip, string take);
+        IEnumerable<RealEstate> GetRealEstates(int skip, int take);
         #endregion
 
         //User
@@ -37,8 +37,8 @@ namespace TeamRedProject.Services
         #region
         Comment GetComment(int commentId, int userId);
         IEnumerable<Comment> GetComments(int userId);
-        IEnumerable<Comment> GetCommentsFromRealEstate(int realEstateId, string skip, string take);
-        IEnumerable<Comment> GetCommentsFromUser(string userName, string skip, string take);
+        IEnumerable<Comment> GetCommentsFromRealEstate(int realEstateId, int skip, int take);
+        IEnumerable<Comment> GetCommentsFromUser(string userName, int skip, int take);
         void AddComment(string username, Comment comment);
         void UpdateComment(Comment comment);
         void DeleteComment(Comment comment);

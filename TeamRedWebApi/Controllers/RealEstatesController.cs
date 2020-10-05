@@ -27,7 +27,7 @@ namespace TeamRedWebApi.Controllers
 
 
         [HttpGet()]
-        public ActionResult<IEnumerable<RealEstateDto>> GetRealEstates([FromQuery] string skip = "", [FromQuery] string take = "10")
+        public ActionResult<IEnumerable<RealEstateDto>> GetRealEstates([FromQuery] int skip = 0, [FromQuery] int take = 10)
         {
             var realEstateFromRepo = realEstateRepo.GetRealEstates(skip, take);
             return Ok(_mapper.Map<IEnumerable<RealEstateDto>>(realEstateFromRepo));

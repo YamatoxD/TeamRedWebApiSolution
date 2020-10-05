@@ -28,7 +28,7 @@ namespace TeamRedWebApi.Controllers
 
         [HttpGet("{realEstateId}")]
         public ActionResult<IEnumerable<CommentDto>> GetComments(int realEstateId,
-                            [FromQuery] string skip = "", [FromQuery] string take = "10")
+                            [FromQuery] int skip = 0, [FromQuery] int take = 10)
         {
             var commentsFromRepo = commentRepo.GetCommentsFromRealEstate(realEstateId, skip, take);
             return Ok(_mapper.Map<IEnumerable<CommentDto>>(commentsFromRepo));
@@ -36,7 +36,7 @@ namespace TeamRedWebApi.Controllers
 
         [HttpGet("ByUser/{userName}", Name = "GetComments")]
         public ActionResult<IEnumerable<CommentDto>> GetComments(string userName,
-                            [FromQuery] string skip = "", [FromQuery] string take = "10")
+                            [FromQuery] int skip = 0, [FromQuery] int take = 10)
         {
             var commentsFromRepo = commentRepo.GetCommentsFromUser(userName, skip, take);
             return Ok(_mapper.Map<IEnumerable<CommentDto>>(commentsFromRepo));

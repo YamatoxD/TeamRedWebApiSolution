@@ -77,14 +77,12 @@ namespace TeamRedProject.Services
                 .OrderBy(r => r.Title).ToList();
         }
 
-        public IEnumerable<RealEstate> GetRealEstates(string skip, string take)
+        public IEnumerable<RealEstate> GetRealEstates(int skip, int take)
         {
-            if (skip == "") skip = "0";
-            if (take == "") take = "10";
             return _context.RealEstates.ToList<RealEstate>()
                 .OrderByDescending(o => o.AdCreated)
-                .Skip(int.Parse(skip))  
-                .Take(int.Parse(take));
+                .Skip(skip)  
+                .Take(take);
         }
 
         #endregion
@@ -200,22 +198,20 @@ namespace TeamRedProject.Services
             return _context.Comments.Where(r => r.UserId == userId);
         }
 
-        public IEnumerable<Comment> GetCommentsFromRealEstate(int realEstateId, string skip, string take)
+        public IEnumerable<Comment> GetCommentsFromRealEstate(int realEstateId, int skip, int take)
         {
             if (realEstateId <= 0)
             {
                 throw new ArgumentNullException(nameof(realEstateId));
             }
 
-            if (skip == "") skip = "0";
-            if (take == "") take = "10";
             return _context.Comments.Include("Creator")
                 .Where(r => r.RealEstateId == realEstateId)
                 .OrderByDescending(o => o.CreatedOn)
-                .Skip(int.Parse(skip))
-                .Take(int.Parse(take)).ToList();
+                .Skip(skip)
+                .Take(take).ToList();
         }
-        public IEnumerable<Comment> GetCommentsFromUser(string userName, string skip, string take)
+        public IEnumerable<Comment> GetCommentsFromUser(string userName, int skip, int take)
         {
             var user = _context.Users.Where(x => x.UserName == userName).FirstOrDefault();
             if (user == null)
@@ -223,13 +219,11 @@ namespace TeamRedProject.Services
                 throw new ArgumentNullException(nameof(user));
             }
 
-            if (skip == "") skip = "0";
-            if (take == "") take = "10";
             return _context.Comments.ToList<Comment>()
                 .Where(x => x.UserId == user.Id)
                 .OrderByDescending(o => o.CreatedOn)
-                .Skip(int.Parse(skip))
-                .Take(int.Parse(take));
+                .Skip(skip)
+                .Take(take);
         }
 
         public void AddComment(string username, Comment comment)
