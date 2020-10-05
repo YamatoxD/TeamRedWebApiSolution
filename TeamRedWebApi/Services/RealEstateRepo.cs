@@ -34,7 +34,7 @@ namespace TeamRedProject.Services
                 throw new ArgumentNullException(nameof(realEstate));
             }
             realEstate.UserId = userid;
-            realEstate.AdCreated = DateTime.Now;
+            realEstate.AdCreated = DateTimeOffset.Now;
             if (realEstate.RentingPrice > 0) realEstate.CanBeRented = true;
             if (realEstate.PurchasePrice > 0) realEstate.CanBePurchased = true;
             _context.RealEstates.Add(realEstate);
@@ -61,7 +61,7 @@ namespace TeamRedProject.Services
             {
                 throw new ArgumentNullException(nameof(realEstateId));
             }
-            return _context.RealEstates.Include("Comments")
+            return _context.RealEstates.Include("Comments").Include("Creator")
                 .Where(r =>r.Id == realEstateId).FirstOrDefault();
         }
 
@@ -127,7 +127,7 @@ namespace TeamRedProject.Services
 
         public IEnumerable<User> GetUsers()
         {
-            return _context.Users.ToList<User>();
+            return _context.Users.Include("Comments").Include("RealEstates").ToList<User>();
         }
 
         public IEnumerable<User> GetUsers(IEnumerable<int> userIds)
@@ -200,7 +200,6 @@ namespace TeamRedProject.Services
             return _context.Comments.Where(r => r.UserId == userId);
         }
 
-        //behöver fixas
         public IEnumerable<Comment> GetCommentsFromRealEstate(int realEstateId, string skip, string take)
         {
             if (realEstateId <= 0)
@@ -243,6 +242,7 @@ namespace TeamRedProject.Services
             if(user==null) throw new ArgumentNullException(nameof(user));
 
             comment.UserId = user.Id;
+            comment.CreatedOn = DateTimeOffset.Now;
             _context.Comments.Add(comment);
         }
 
