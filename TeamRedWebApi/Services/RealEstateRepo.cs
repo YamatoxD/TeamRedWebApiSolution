@@ -22,8 +22,7 @@ namespace TeamRedProject.Services
         public RealEstateRepo(RealEstateContext context, IConfiguration configuration)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-            this.Configuration = configuration;
-
+            this.configuration = configuration;
         }
 
         //Realestate
@@ -287,11 +286,8 @@ namespace TeamRedProject.Services
             if (user == null) return null;
 
             var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenKey = Encoding.ASCII.GetBytes(configuration["JWT:Secret"]);
             
-            /*"this is my custom Secret key for authnetication"*/
-            var key = Configuration["JWT:Secret"];
-            var tokenKey = Encoding.ASCII.GetBytes(key);
-
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
