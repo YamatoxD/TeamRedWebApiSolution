@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,12 @@ namespace TeamRedProject.Services
     public class RealEstateRepo : IRealEstateRepo, IDisposable
     {
         private readonly RealEstateContext _context;
+        private readonly IConfiguration configuration;
 
-        public RealEstateRepo(RealEstateContext context)
+        public RealEstateRepo(RealEstateContext context, IConfiguration configuration)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            this.configuration = configuration;
         }
 
         //Realestate
@@ -283,7 +286,7 @@ namespace TeamRedProject.Services
             if (user == null) return null;
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var tokenKey = Encoding.ASCII.GetBytes("this is my custom Secret key for authnetication");
+            var tokenKey = Encoding.ASCII.GetBytes(configuration["JWT:Secret"]);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

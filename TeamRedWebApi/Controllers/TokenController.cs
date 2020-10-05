@@ -28,9 +28,20 @@ namespace TeamRedWebApi.Controllers
         [HttpPost]
         public IActionResult Authenticate(string username, string password)
         {
-            var token =  _realEstateRepo.AuthenticateUser(username, password);
+            var token = _realEstateRepo.AuthenticateUser(username, password);           
             if (token == null) return Unauthorized();
-            return Ok(token);
+
+            var handler = new JwtSecurityTokenHandler();
+            var tokenS = handler.ReadToken(token) as JwtSecurityToken;
+
+            return Ok(new
+            {
+                access_token = token,
+                token_type = tokenS.Header.Typ,
+                userName = username,
+                expiration = tokenS.ValidTo,
+                issued = tokenS.ValidFrom
+            });
         }
     }
 }

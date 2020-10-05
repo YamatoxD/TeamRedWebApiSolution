@@ -33,8 +33,7 @@ namespace TeamRedWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var key = "this is my custom Secret key for authnetication";
-
+            //var key = "this is my custom Secret key for authnetication";
             services.AddScoped<IRealEstateRepo, RealEstateRepo>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -57,7 +56,7 @@ namespace TeamRedWebApi
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["JWT:Secret"])),
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
