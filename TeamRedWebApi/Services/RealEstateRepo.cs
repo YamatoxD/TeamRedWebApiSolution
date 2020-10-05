@@ -34,7 +34,7 @@ namespace TeamRedProject.Services
                 throw new ArgumentNullException(nameof(realEstate));
             }
             realEstate.UserId = userid;
-            realEstate.AdCreated = DateTime.Now;
+            realEstate.AdCreated = DateTimeOffset.Now;
             if (realEstate.RentingPrice > 0) realEstate.CanBeRented = true;
             if (realEstate.PurchasePrice > 0) realEstate.CanBePurchased = true;
             _context.RealEstates.Add(realEstate);
@@ -243,6 +243,7 @@ namespace TeamRedProject.Services
             if(user==null) throw new ArgumentNullException(nameof(user));
 
             comment.UserId = user.Id;
+            comment.CreatedOn = DateTimeOffset.Now;
             _context.Comments.Add(comment);
         }
 

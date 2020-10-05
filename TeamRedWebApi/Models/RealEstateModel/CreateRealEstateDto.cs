@@ -13,7 +13,7 @@ namespace TeamRedWebApi.Models.RealEstateModel
         [Required]
         public string Address { get; set; }
         [Required]
-        public string Discription { get; set; }
+        public string Description { get; set; }
         [Required]
         public int RentingPrice { get; set; }
         [Required]
