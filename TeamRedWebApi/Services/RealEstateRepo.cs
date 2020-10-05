@@ -17,7 +17,7 @@ namespace TeamRedProject.Services
     public class RealEstateRepo : IRealEstateRepo, IDisposable
     {
         private readonly RealEstateContext _context;
-        private readonly IConfiguration configuration;
+        private IConfiguration Configuration { get; }
 
         public RealEstateRepo(RealEstateContext context, IConfiguration configuration)
         {
@@ -280,13 +280,14 @@ namespace TeamRedProject.Services
             }
         }
 
-        public string AuthenticateUser(string name, string password)
+        public JwtSecurityToken AuthenticateUser(string name, string password)
         {
             var user = _context.Users.Where(a => a.UserName == name && a.Password == password).FirstOrDefault();
             if (user == null) return null;
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.ASCII.GetBytes(configuration["JWT:Secret"]);
+            
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
@@ -296,8 +297,10 @@ namespace TeamRedProject.Services
                 Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
             };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            //var token = tokenHandler.CreateToken(tokenDescriptor);
+            var token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
+
+            return token; /*tokenHandler.WriteToken(token);*/
         }
     }
 }
