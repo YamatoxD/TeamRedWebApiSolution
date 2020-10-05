@@ -7,7 +7,7 @@ namespace TeamRedWebApi.Models.RealEstateModel
 {
     public class RealEstateDetailsDto
     {
-        public DateTimeOffset CreatedOn { get; set; }
+        public DateTimeOffset AdCreated { get; set; }
         public string ConstructionYear { get; set; }
         public string Address { get; set; }
         public int Type { get; set; }
