@@ -22,6 +22,9 @@ namespace TeamRedWebApi.Controllers
 #pragma warning disable CS1591
     [Route("api/account")]
     [ApiController]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public class AccountController : ControllerBase
     {
         private readonly IRealEstateRepo userRepo;
@@ -38,6 +41,10 @@ namespace TeamRedWebApi.Controllers
         /// </summary>
         /// <param name="createUser">The user that should be registered (created)</param>
         /// <returns>Returns the username of the added user</returns>
+        /// <response code="200">Creates a new User</response>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
         [Route("register")]
         [HttpPost()]
         public IActionResult Register(CreateUserDto createUser)
@@ -62,6 +69,10 @@ namespace TeamRedWebApi.Controllers
         /// </summary>
         /// <param name="user">The User that should be logged in</param>
         /// <returns>Returns the token for the logged in user, when the token expires and the info. </returns>
+        /// /// <response code="200">Logs the user in</response>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
         [Route("login")]
         [HttpPost]
         public IActionResult Login(LoginUserDto user)

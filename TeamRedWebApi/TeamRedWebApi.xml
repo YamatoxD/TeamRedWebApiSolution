@@ -10,6 +10,7 @@
             </summary>
             <param name="createUser">The user that should be registered (created)</param>
             <returns>Returns the username of the added user</returns>
+            <response code="200">Creates a new User</response>
         </member>
         <member name="M:TeamRedWebApi.Controllers.AccountController.Login(TeamRedWebApi.Models.UserModel.LoginUserDto)">
             <summary>
@@ -17,6 +18,7 @@
             </summary>
             <param name="user">The User that should be logged in</param>
             <returns>Returns the token for the logged in user, when the token expires and the info. </returns>
+            /// <response code="200">Logs the user in</response>
         </member>
         <member name="M:TeamRedWebApi.Controllers.CommentsController.GetComments(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -26,6 +28,7 @@
             <param name="skip">The amount of comments you want to skip</param>
             <param name="take">The amount of comments you want to take</param>
             <returns>Returns Content, the username, and when the comment was created</returns>
+            /// <response code="200">Returns the requested comment</response>
         </member>
         <member name="M:TeamRedWebApi.Controllers.CommentsController.GetComments(System.String,System.Int32,System.Int32)">
             <summary>
@@ -35,6 +38,7 @@
             <param name="skip">The amount of comments you want to skip</param>
             <param name="take">The amount of comments you want to take</param>
             <returns>Returns the Content, username and when the comment was created</returns>
+            /// <response code="200">Returns the requested comment</response>
         </member>
         <member name="M:TeamRedWebApi.Controllers.CommentsController.CreateComment(TeamRedWebApi.Models.CommentModel.CreateCommentDto)">
             <summary>
@@ -42,6 +46,7 @@
             </summary>
             <param name="comment">The comment that should be crated</param>
             <returns>Returns the content, username and when the comment was created</returns>
+            /// <response code="201">Creates a new Comment</response>
         </member>
         <member name="M:TeamRedWebApi.Controllers.RealEstatesController.GetRealEstates(System.Int32,System.Int32)">
             <summary>
@@ -50,6 +55,7 @@
             <param name="skip">The number of realestates you want to skip, make empty to skip none</param>
             <param name="take">The number of realestates you want to take, make empty to take all</param>
             <returns>Returns all the Realestates for the conditions inputed</returns>
+            /// <response code="200">Gets the Requested Realestate</response>
         </member>
         <member name="M:TeamRedWebApi.Controllers.RealEstatesController.GetRealEstates(System.Int32)">
             <summary>
@@ -57,6 +63,7 @@
             </summary>
             <param name="realEstateId">The is of the realestate you want to get</param>
             <returns>returns realestate with id, Title, Rentingprice, purchaseprice, canberented and can be purchased </returns>
+            <response code="200">Gets the Requested Realestate</response>
         </member>
         <member name="M:TeamRedWebApi.Controllers.RealEstatesController.CreateRealEstate(TeamRedWebApi.Models.RealEstateModel.CreateRealEstateDto)">
             <summary>
@@ -64,6 +71,7 @@
             </summary>
             <param name="realEstate">The realestate that should be created</param>
             <returns>Returns a Realestate with, Title, Address, Description, RentingPrice, PurchasePrice, CanBeRented, CanBePurchased, Contact, ConstructionYear and Type</returns>
+            <response code="201">Returns the Created Realestate</response>
         </member>
         <member name="M:TeamRedWebApi.Controllers.TokenController.Authenticate(System.String,System.String)">
             <summary>
@@ -72,12 +80,14 @@
             <param name="username">The username of the user that wants to login</param>
             <param name="password">The password of the user that wants to login</param>
             <returns>returns a token for the user</returns>
+            <response code="200">Returns the Token of the Authorized User</response>
         </member>
         <member name="M:TeamRedWebApi.Controllers.UsersController.GetUser">
             <summary>
             Gets all users
             </summary>
-            <returns>An user with id, username, AverageRating, RealEstates and comments</returns>
+            <returns>Get all users with id, username, AverageRating, RealEstates and comments</returns>
+            <response code="200">Returns all the the users</response>
         </member>
         <member name="M:TeamRedWebApi.Controllers.UsersController.GetUser(System.String)">
             <summary>
@@ -85,6 +95,7 @@
             </summary>
             <param name="userName">The username of the user you want to get</param>
             <returns>A user with username, Username, AverageRating, RealEstates and Comments</returns>
+            <response code="200">Returns the specified user from username</response>
         </member>
         <member name="M:TeamRedWebApi.Controllers.UsersController.Rate(TeamRedWebApi.Models.UserModel.UpdateUser)">
             <summary>

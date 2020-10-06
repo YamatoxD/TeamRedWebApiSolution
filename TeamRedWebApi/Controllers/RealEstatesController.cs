@@ -15,6 +15,9 @@ namespace TeamRedWebApi.Controllers
 #pragma warning disable CS1591
     [Route("api/RealEstates")]
     [ApiController]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public class RealEstatesController : ControllerBase
     {
         private readonly IRealEstateRepo realEstateRepo;
@@ -32,6 +35,10 @@ namespace TeamRedWebApi.Controllers
         /// <param name="skip">The number of realestates you want to skip, make empty to skip none</param>
         /// <param name="take">The number of realestates you want to take, make empty to take all</param>
         /// <returns>Returns all the Realestates for the conditions inputed</returns>
+        /// /// <response code="200">Gets the Requested Realestate</response>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
         [HttpGet()]
         public ActionResult<IEnumerable<RealEstateDto>> GetRealEstates([FromQuery] int skip = 0, [FromQuery] int take = 10)
         {
@@ -44,6 +51,10 @@ namespace TeamRedWebApi.Controllers
         /// </summary>
         /// <param name="realEstateId">The is of the realestate you want to get</param>
         /// <returns>returns realestate with id, Title, Rentingprice, purchaseprice, canberented and can be purchased </returns>
+        /// <response code="200">Gets the Requested Realestate</response>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
         [HttpGet("{realEstateId}", Name = "GetRealEstates")]
         public IActionResult GetRealEstates(int realEstateId)
         {
@@ -61,6 +72,10 @@ namespace TeamRedWebApi.Controllers
         /// </summary>
         /// <param name="realEstate">The realestate that should be created</param>
         /// <returns>Returns a Realestate with, Title, Address, Description, RentingPrice, PurchasePrice, CanBeRented, CanBePurchased, Contact, ConstructionYear and Type</returns>
+        /// <response code="201">Returns the Created Realestate</response>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesDefaultResponseType]
         [Authorize]
         [HttpPost]
         public ActionResult<RealEstateDto> CreateRealEstate(CreateRealEstateDto realEstate)
