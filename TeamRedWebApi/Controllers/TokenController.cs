@@ -17,6 +17,9 @@ namespace TeamRedWebApi.Controllers
 #pragma warning disable CS1591
     [Route("token")]
     [ApiController]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public class TokenController : ControllerBase
     {
         private readonly IRealEstateRepo _realEstateRepo;
@@ -31,6 +34,10 @@ namespace TeamRedWebApi.Controllers
         /// <param name="username">The username of the user that wants to login</param>
         /// <param name="password">The password of the user that wants to login</param>
         /// <returns>returns a token for the user</returns>
+        /// <response code="200">Returns the Token of the Authorized User</response>
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
         [HttpPost]
         public IActionResult Authenticate(string username, string password)
         {

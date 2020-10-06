@@ -16,6 +16,9 @@ namespace TeamRedWebApi.Controllers
     [Authorize]
     [Route("api/Comments")]
     [ApiController]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public class CommentsController : ControllerBase
     {
         private readonly IRealEstateRepo commentRepo;
@@ -33,7 +36,10 @@ namespace TeamRedWebApi.Controllers
         /// <param name="skip">The amount of comments you want to skip</param>
         /// <param name="take">The amount of comments you want to take</param>
         /// <returns>Returns Content, the username, and when the comment was created</returns>
-
+        /// /// <response code="200">Returns the requested comment</response>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
         [HttpGet("{realEstateId}")]
         public ActionResult<IEnumerable<CommentDto>> GetComments(int realEstateId,
                             [FromQuery] int skip = 0, [FromQuery] int take = 10)
@@ -49,6 +55,10 @@ namespace TeamRedWebApi.Controllers
         /// <param name="skip">The amount of comments you want to skip</param>
         /// <param name="take">The amount of comments you want to take</param>
         /// <returns>Returns the Content, username and when the comment was created</returns>
+        /// /// <response code="200">Returns the requested comment</response>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
         [HttpGet("ByUser/{userName}", Name = "GetComments")]
         public ActionResult<IEnumerable<CommentDto>> GetComments(string userName,
                             [FromQuery] int skip = 0, [FromQuery] int take = 10)
@@ -62,6 +72,10 @@ namespace TeamRedWebApi.Controllers
         /// </summary>
         /// <param name="comment">The comment that should be crated</param>
         /// <returns>Returns the content, username and when the comment was created</returns>
+        /// /// <response code="201">Creates a new Comment</response>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesDefaultResponseType]
         [HttpPost]
         public ActionResult<CommentDto> CreateComment(CreateCommentDto comment)
         {

@@ -39,6 +39,7 @@ namespace TeamRedWebApi
             services.AddScoped<IRealEstateRepo, RealEstateRepo>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddSwaggerGen(setupAction =>
             {
                 setupAction.SwaggerDoc("TeamRedOpenAPISpecification", new Microsoft.OpenApi.Models.OpenApiInfo() 
