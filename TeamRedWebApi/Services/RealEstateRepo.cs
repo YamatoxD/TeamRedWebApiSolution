@@ -14,6 +14,7 @@ using TeamRedProject.Enitites;
 
 namespace TeamRedProject.Services
 {
+#pragma warning disable CS1591
     public class RealEstateRepo : IRealEstateRepo, IDisposable
     {
         private readonly RealEstateContext _context;
@@ -313,4 +314,5 @@ namespace TeamRedProject.Services
         }
         #endregion
     }
+#pragma warning restore CS1591
 }

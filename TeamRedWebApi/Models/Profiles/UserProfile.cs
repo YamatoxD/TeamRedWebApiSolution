@@ -8,8 +8,10 @@ using TeamRedWebApi.Models.UserModel;
 
 namespace TeamRedWebApi.Profiles
 {
+#pragma warning disable CS1591
     public class UserProfile : Profile
     {
+
         public UserProfile()
         {
             CreateMap<User, UserDto>().ForMember(
@@ -25,4 +27,5 @@ namespace TeamRedWebApi.Profiles
             CreateMap<UpdateUser, User>();
         }
     }
+#pragma warning restore CS1591
 }

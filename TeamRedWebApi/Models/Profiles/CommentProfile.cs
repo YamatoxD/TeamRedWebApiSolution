@@ -8,8 +8,10 @@ using TeamRedWebApi.Models.CommentModel;
 
 namespace TeamRedWebApi.Profiles
 {
+#pragma warning disable CS1591
     public class CommentProfile : Profile
     {
+
         public CommentProfile()
         {
             CreateMap<Comment, CommentDto>().ForMember(

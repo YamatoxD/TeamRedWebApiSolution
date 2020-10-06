@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace TeamRedProject.Enitites
 {
+#pragma warning disable CS1591
     public class Comment
     {
         [Required]
@@ -33,4 +34,5 @@ namespace TeamRedProject.Enitites
        
         public int? CommentId { get; set; }      
     }
+#pragma warning restore CS1591
 }

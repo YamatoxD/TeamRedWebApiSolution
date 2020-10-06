@@ -7,6 +7,7 @@ using TeamRedProject.Enitites;
 
 namespace TeamRedProject.DbContexts
 {
+#pragma warning disable CS1591
     public class RealEstateContext : DbContext
     {
         public RealEstateContext(DbContextOptions<RealEstateContext> options) : base(options) { }

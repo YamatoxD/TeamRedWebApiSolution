@@ -8,6 +8,7 @@ using TeamRedWebApi.Models.RealEstateModel;
 
 namespace TeamRedWebApi.Profiles
 {
+#pragma warning disable CS1591
     public class RealEstateProfile : Profile
     {
         public RealEstateProfile()
@@ -18,4 +19,5 @@ namespace TeamRedWebApi.Profiles
             CreateMap<CreateRealEstateDto, RealEstate>();
         }
     }
+#pragma warning restore CS1591
 }

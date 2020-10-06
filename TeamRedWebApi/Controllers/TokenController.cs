@@ -14,6 +14,7 @@ using TeamRedProject.Services;
 
 namespace TeamRedWebApi.Controllers
 {
+#pragma warning disable CS1591
     [Route("token")]
     [ApiController]
     public class TokenController : ControllerBase
@@ -24,7 +25,12 @@ namespace TeamRedWebApi.Controllers
         {
             this._realEstateRepo = realEstateRepo;
         }
-
+        /// <summary>
+        /// Authentication with username and password. (Login)
+        /// </summary>
+        /// <param name="username">The username of the user that wants to login</param>
+        /// <param name="password">The password of the user that wants to login</param>
+        /// <returns>returns a token for the user</returns>
         [HttpPost]
         public IActionResult Authenticate(string username, string password)
         {

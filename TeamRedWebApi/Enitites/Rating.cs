@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace TeamRedProject.Enitites
 {
+#pragma warning disable CS1591
     public class Rating
     {
         [Key]
@@ -19,4 +20,5 @@ namespace TeamRedProject.Enitites
         public User User { get; set; }
         public int? UserId { get; set; }
     }
+#pragma warning restore CS1591
 }

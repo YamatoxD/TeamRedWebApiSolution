@@ -14,6 +14,7 @@ using TeamRedWebApi.Models.UserModel;
 
 namespace TeamRedWebApi.Controllers
 {
+#pragma warning disable CS1591
     [Route("api/Users")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -27,6 +28,10 @@ namespace TeamRedWebApi.Controllers
             this._mapper = mapper;
         }
 
+        /// <summary>
+        /// Gets all users
+        /// </summary>
+        /// <returns>An user with id, username, AverageRating, RealEstates and comments</returns>
         [HttpGet()]
         public ActionResult<IEnumerable<UserDto>> GetUser()
         {
@@ -34,6 +39,11 @@ namespace TeamRedWebApi.Controllers
             return Ok(_mapper.Map<IEnumerable<UserDto>>(userFromRepo));
         }
 
+        /// <summary>
+        /// Get a user by his/her username
+        /// </summary>
+        /// <param name="userName">The username of the user you want to get</param>
+        /// <returns>A user with username, Username, AverageRating, RealEstates and Comments</returns>
         [HttpGet("{userName}", Name = "GetUser")]
         public IActionResult GetUser(string userName)
         {
@@ -42,6 +52,11 @@ namespace TeamRedWebApi.Controllers
             return Ok(_mapper.Map<UserDto>(userFromRepo));
         }
 
+        /// <summary>
+        /// Update the rating of a user
+        /// </summary>
+        /// <param name="user">The User you want to rate</param>
+        /// <returns>Returns the rating and the user rated</returns>
         [Authorize]
         [HttpPut("Rate")]
         public IActionResult Rate(UpdateUser user)

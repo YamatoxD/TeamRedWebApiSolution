@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TeamRedProject.Enitites
 {
+#pragma warning disable CS1591
     public class User
     {
         [Required]
@@ -25,4 +26,5 @@ namespace TeamRedProject.Enitites
         public List<Rating> Ratings { get; set; } = new List<Rating>();
         public List<Comment> Comments { get; set; } = new List<Comment>();  
     }
+#pragma warning restore CS1591
 }

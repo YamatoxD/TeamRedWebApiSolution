@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace TeamRedWebApi.Models.UserModel
 {
+#pragma warning disable CS1591
     public class CreateUserDto
     {
+
         [Required]
         public string UserName { get; set; }
 
@@ -24,4 +26,5 @@ namespace TeamRedWebApi.Models.UserModel
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
     }
+#pragma warning restore CS1591
 }
