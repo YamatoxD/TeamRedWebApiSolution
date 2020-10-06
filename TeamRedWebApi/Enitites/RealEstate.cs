@@ -47,10 +47,6 @@ namespace TeamRedProject.Enitites
         [Required]
         public int UserId { get; set; }
 
-        public string AverageRating { get; set; }
-
-        public string Ratings { get; set; }
-
         public List<Comment> Comments { get; set; } = new List<Comment>();
     }
 #pragma warning restore CS1591

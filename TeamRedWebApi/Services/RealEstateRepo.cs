@@ -110,12 +110,10 @@ namespace TeamRedProject.Services
             }
             _context.Users.Add(user);
         }
-
         public void UpdateUser(User user)
         {
             //not implemented in this project
         }
-
         public void DeleteUser(User user)
         {
             if(user == null)
@@ -124,7 +122,6 @@ namespace TeamRedProject.Services
             }
             _context.Users.Remove(user);
         }
-
         public User GetUser(string Name)
         {
           if(Name == null) throw new ArgumentNullException(nameof(Name));
@@ -135,12 +132,10 @@ namespace TeamRedProject.Services
         {
             return _context.Users.Include("Ratings").FirstOrDefault(a => a.Id == userid);
         }
-
         public IEnumerable<User> GetUsers()
         {
             return _context.Users.Include("Comments").Include("RealEstates").ToList<User>();
         }
-
         public IEnumerable<User> GetUsers(IEnumerable<int> userIds)
         {
            if(userIds == null)
@@ -152,7 +147,6 @@ namespace TeamRedProject.Services
                  .OrderBy(a => a.UserName)
                  .ToList();
         }
-
         public bool UserExists(int userId)
         {
             if(userId <= 0)
@@ -162,7 +156,6 @@ namespace TeamRedProject.Services
 
             return _context.Users.Any(a => a.Id == userId);
         }
-
         public bool RateUser(string username, int userId, int value)
         {
             var user = GetUser(userId);
