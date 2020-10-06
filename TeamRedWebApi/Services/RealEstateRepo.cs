@@ -37,12 +37,24 @@ namespace TeamRedProject.Services
             realEstate.AdCreated = DateTimeOffset.Now;
             if (realEstate.RentingPrice > 0) realEstate.CanBeRented = true;
             if (realEstate.PurchasePrice > 0) realEstate.CanBePurchased = true;
-            _context.RealEstates.Add(realEstate);
+            if(int.Parse(realEstate.ConstructionYear) >= 1600 && realEstate.Type <= 4)
+            {
+                _context.RealEstates.Add(realEstate);
+            }
+            else if(int.Parse(realEstate.ConstructionYear) < 1600)
+            {
+                throw new ArgumentOutOfRangeException(nameof(realEstate.ConstructionYear));
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(realEstate.Type));
+            }
+            
         }
 
         public void UpdateRealEstate(RealEstate realEstate)
         {
-            throw new NotImplementedException();
+            //not implemented in this project
         }
 
         public void DeleteRealEstate(RealEstate realEstate)
@@ -100,7 +112,7 @@ namespace TeamRedProject.Services
 
         public void UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            //not implemented in this project
         }
 
         public void DeleteUser(User user)
@@ -242,7 +254,7 @@ namespace TeamRedProject.Services
 
         public void UpdateComment(Comment comment)
         {
-            throw new NotImplementedException();
+            //not implemented in this project
         }
 
         public void DeleteComment(Comment comment)
@@ -255,6 +267,9 @@ namespace TeamRedProject.Services
         }
 
         #endregion
+
+        //Save and Authentication
+        #region
 
         public bool Save()
         {
@@ -296,5 +311,6 @@ namespace TeamRedProject.Services
 
             return token; /*tokenHandler.WriteToken(token);*/
         }
+        #endregion
     }
 }
