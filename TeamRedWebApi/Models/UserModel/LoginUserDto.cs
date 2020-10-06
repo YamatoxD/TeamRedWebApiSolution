@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace TeamRedWebApi.Models.UserModel
 {
+#pragma warning disable CS1591
     public class LoginUserDto
     {
+
         [MinLength(3, ErrorMessage = "Username length must be longer then 2")]
         [Required(ErrorMessage = "Username is required")]
         [DataType(DataType.Text)]
@@ -18,4 +20,5 @@ namespace TeamRedWebApi.Models.UserModel
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }
+#pragma warning restore CS1591
 }

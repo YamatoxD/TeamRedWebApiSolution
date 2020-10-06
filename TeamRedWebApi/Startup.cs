@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -21,6 +23,7 @@ using TeamRedProject.Services;
 
 namespace TeamRedWebApi
 {
+#pragma warning disable CS1591
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -36,6 +39,25 @@ namespace TeamRedWebApi
             services.AddScoped<IRealEstateRepo, RealEstateRepo>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddSwaggerGen(setupAction =>
+            {
+                setupAction.SwaggerDoc("TeamRedOpenAPISpecification", new Microsoft.OpenApi.Models.OpenApiInfo() 
+                {
+                    Title = "Team Red Project API",
+                    Version = "1",
+                    Description = "Through this API you can create a Realestate Selling Website",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                    {
+                        Email = "Jesper.eriksson@edu.varberg.se",
+                        Name = "Jesper Eriksson",
+                    }
+                });
+
+                var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
+
+                setupAction.IncludeXmlComments(xmlCommentsFullPath);
+            });
 
             services.AddDbContext<RealEstateContext>(options =>
             {
@@ -75,6 +97,16 @@ namespace TeamRedWebApi
 
             app.UseRouting();
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(setupAction =>
+            {
+                setupAction.SwaggerEndpoint(
+                    "/swagger/TeamRedOpenAPISpecification/swagger.json",
+                    "Team Red Project API");
+                setupAction.RoutePrefix = "";
+            });
+
             app.UseAuthentication();
 
             app.UseAuthorization();
@@ -85,4 +117,5 @@ namespace TeamRedWebApi
             });
         }
     }
+#pragma warning restore CS1591
 }

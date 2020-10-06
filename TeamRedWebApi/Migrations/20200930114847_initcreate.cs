@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TeamRedWebApi.Migrations
 {
+#pragma warning disable CS1591
     public partial class initcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

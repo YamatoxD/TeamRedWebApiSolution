@@ -19,6 +19,7 @@ using TeamRedWebApi.Models.UserModel;
 
 namespace TeamRedWebApi.Controllers
 {
+#pragma warning disable CS1591
     [Route("api/account")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -32,6 +33,11 @@ namespace TeamRedWebApi.Controllers
             this._mapper = mapper;
         }
 
+        /// <summary>
+        /// Register a new user (Create new user)
+        /// </summary>
+        /// <param name="createUser">The user that should be registered (created)</param>
+        /// <returns>Returns the username of the added user</returns>
         [Route("register")]
         [HttpPost()]
         public IActionResult Register(CreateUserDto createUser)
@@ -50,6 +56,12 @@ namespace TeamRedWebApi.Controllers
             return BadRequest("CreateUser Error");
         }
 
+
+        /// <summary>
+        /// Post a request for login.
+        /// </summary>
+        /// <param name="user">The User that should be logged in</param>
+        /// <returns>Returns the token for the logged in user, when the token expires and the info. </returns>
         [Route("login")]
         [HttpPost]
         public IActionResult Login(LoginUserDto user)

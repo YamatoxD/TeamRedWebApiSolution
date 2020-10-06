@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace TeamRedProject.Enitites
 {
+#pragma warning disable CS1591
     public class RealEstate
     {
         [Required]
@@ -29,7 +30,9 @@ namespace TeamRedProject.Enitites
         public int RentingPrice { get; set; }
         public int PurchasePrice { get; set; }
         public bool CanBeRented { get; set; }
+
         public bool CanBePurchased { get; set; }
+
         public string Contact { get; set; }
 
         [Required]
@@ -43,8 +46,12 @@ namespace TeamRedProject.Enitites
 
         [Required]
         public int UserId { get; set; }
+
         public string AverageRating { get; set; }
+
         public string Ratings { get; set; }
+
         public List<Comment> Comments { get; set; } = new List<Comment>();
     }
+#pragma warning restore CS1591
 }

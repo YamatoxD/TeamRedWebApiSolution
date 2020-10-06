@@ -8,9 +8,9 @@ using TeamRedProject.Enitites;
 
 namespace TeamRedProject.Services
 {
+#pragma warning disable CS1591
     public interface IRealEstateRepo
     {
-        //Realestate
         #region
         IEnumerable<RealEstate> GetRealEstates(int userId);
         RealEstate GetRealEstate(int realEstateId);
@@ -48,4 +48,5 @@ namespace TeamRedProject.Services
 
         bool Save();
     }
+#pragma warning restore CS1591
 }
