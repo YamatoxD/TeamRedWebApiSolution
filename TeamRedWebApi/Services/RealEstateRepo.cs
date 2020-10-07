@@ -53,12 +53,6 @@ namespace TeamRedProject.Services
             }
             
         }
-
-        public void UpdateRealEstate(RealEstate realEstate)
-        {
-            //not implemented in this project
-        }
-
         public void DeleteRealEstate(RealEstate realEstate)
         {
 
@@ -68,7 +62,6 @@ namespace TeamRedProject.Services
             }
             _context.RealEstates.Remove(realEstate);
         }
-
         public RealEstate GetRealEstate(int realEstateId)
         {
             if(realEstateId <= 0)
@@ -78,7 +71,6 @@ namespace TeamRedProject.Services
             return _context.RealEstates.Include("Comments").Include("Creator")
                 .Where(r =>r.Id == realEstateId).FirstOrDefault();
         }
-
         public IEnumerable<RealEstate> GetRealEstates(int userId)
         {
             if(userId <= 0)
@@ -90,7 +82,6 @@ namespace TeamRedProject.Services
                 .Where(r => r.UserId == userId)
                 .OrderBy(r => r.Title).ToList();
         }
-
         public IEnumerable<RealEstate> GetRealEstates(int skip, int take)
         {
             return _context.RealEstates.ToList<RealEstate>()
@@ -116,10 +107,6 @@ namespace TeamRedProject.Services
             }
             _context.Users.Add(user);
         }
-        public void UpdateUser(User user)
-        {
-            //not implemented in this project
-        }
         public void DeleteUser(User user)
         {
             if(user == null)
@@ -141,17 +128,6 @@ namespace TeamRedProject.Services
         public IEnumerable<User> GetUsers()
         {
             return _context.Users.Include("Comments").Include("RealEstates").ToList<User>();
-        }
-        public IEnumerable<User> GetUsers(IEnumerable<int> userIds)
-        {
-           if(userIds == null)
-            {
-                throw new ArgumentNullException(nameof(userIds));
-            }
-
-            return _context.Users.Where(a => userIds.Contains(a.Id))
-                 .OrderBy(a => a.UserName)
-                 .ToList();
         }
         public bool UserExists(int userId)
         {
@@ -185,31 +161,6 @@ namespace TeamRedProject.Services
 
         //Comment
         #region
-
-        public Comment GetComment(int commentId, int userId)
-        {
-            if(commentId <= 0)
-            {
-                throw new ArgumentNullException(nameof(commentId));
-            }
-            if(userId <= 0)
-            {
-                throw new ArgumentNullException(nameof(userId));
-            }
-
-            return _context.Comments.FirstOrDefault(a => a.Id == commentId);
-        }
-
-        public IEnumerable<Comment> GetComments(int userId)
-        {
-            if(userId <= 0)
-            {
-                throw new ArgumentNullException(nameof(userId));
-            }
-
-            return _context.Comments.Where(r => r.UserId == userId);
-        }
-
         public IEnumerable<Comment> GetCommentsFromRealEstate(int realEstateId, int skip, int take)
         {
             if (realEstateId <= 0)
@@ -237,7 +188,6 @@ namespace TeamRedProject.Services
                 .Skip(skip)
                 .Take(take);
         }
-
         public void AddComment(string username, Comment comment)
         {
             if(comment == null)
@@ -251,12 +201,6 @@ namespace TeamRedProject.Services
             comment.CreatedOn = DateTimeOffset.Now;
             _context.Comments.Add(comment);
         }
-
-        public void UpdateComment(Comment comment)
-        {
-            //not implemented in this project
-        }
-
         public void DeleteComment(Comment comment)
         {
             if(comment == null)
