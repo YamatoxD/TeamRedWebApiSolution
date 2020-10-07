@@ -32,6 +32,7 @@ namespace TeamRedWebApi.Models.RealEstateModel
 
         [Required]
         public int Type { get; set; }
+        public string ImagUrl { get; set; }
     }
 #pragma warning restore CS1591
 }

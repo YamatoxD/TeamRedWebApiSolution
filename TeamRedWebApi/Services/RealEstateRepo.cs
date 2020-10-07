@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TeamRedProject.DbContexts;
 using TeamRedProject.Enitites;
+using TeamRedWebApi.Enitites;
 
 namespace TeamRedProject.Services
 {
@@ -97,6 +98,11 @@ namespace TeamRedProject.Services
                 .Skip(skip)  
                 .Take(take);
         }
+        public RealEstate GetRealEstateFromUser(string userName, int realestateId)
+        {
+            var user = GetUser(userName);
+            return _context.RealEstates.Where(x => x.UserId == user.Id && x.Id==realestateId).FirstOrDefault();
+        }
 
         #endregion
 
@@ -177,7 +183,7 @@ namespace TeamRedProject.Services
         }
         #endregion
 
-        //comment
+        //Comment
         #region
 
         public Comment GetComment(int commentId, int userId)
@@ -259,6 +265,28 @@ namespace TeamRedProject.Services
             }
             _context.Comments.Remove(comment);
         }
+
+        #endregion
+
+        //Image
+        #region Image
+        public Image AddImage(int realestateid, string imageUrl, string title)
+        {
+            Image image1 = new Image
+            {
+                RealEstateId = realestateid,
+                ImageUrl = imageUrl,
+                Title = title
+            };
+            _context.Images.Add(image1);
+            return image1;
+        }
+
+        public Image GetImage(int imageId) =>
+                            _context.Images.Where(x => x.Id == imageId).FirstOrDefault();
+
+        public IEnumerable<Image> GetImageFromRealEstate(int realestatId) =>
+                            _context.Images.Where(x => x.RealEstateId == realestatId).ToList();
 
         #endregion
 

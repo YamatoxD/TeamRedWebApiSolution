@@ -30,6 +30,7 @@ namespace TeamRedWebApi.Models.RealEstateModel
         public bool CanBePurchased { get; set; }
 
         public bool CanBeRented { get; set; }
+
     }
 #pragma warning restore CS1591
 }
