@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
+using TeamRedWebApi.Enitites;
+//using static System.Net.Mime.MediaTypeNames;
 
 namespace TeamRedProject.Enitites
 {
@@ -30,9 +33,9 @@ namespace TeamRedProject.Enitites
         public int RentingPrice { get; set; }
         public int PurchasePrice { get; set; }
         public bool CanBeRented { get; set; }
-
         public bool CanBePurchased { get; set; }
 
+        [Required]
         public string Contact { get; set; }
 
         [Required]
@@ -48,6 +51,7 @@ namespace TeamRedProject.Enitites
         public int UserId { get; set; }
 
         public List<Comment> Comments { get; set; } = new List<Comment>();
+        public List<Image> Images { get; set; } = new List<Image>();
     }
 #pragma warning restore CS1591
 }
