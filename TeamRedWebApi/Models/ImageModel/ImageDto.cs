@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace TeamRedWebApi.Models.ImageModel
 {
+#pragma warning disable CS1591
     public class ImageDto
     {
         public int Id { get; set; }

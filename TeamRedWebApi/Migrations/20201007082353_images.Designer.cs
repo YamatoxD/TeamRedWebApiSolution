@@ -9,6 +9,7 @@ using TeamRedProject.DbContexts;
 
 namespace TeamRedWebApi.Migrations
 {
+#pragma warning disable CS1591
     [DbContext(typeof(RealEstateContext))]
     [Migration("20201007082353_images")]
     partial class images

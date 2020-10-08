@@ -8,6 +8,7 @@ using TeamRedProject.Enitites;
 
 namespace TeamRedWebApi.Enitites
 {
+#pragma warning disable CS1591
     public class Image
     {
         public int Id { get; set; }

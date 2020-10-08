@@ -2,8 +2,10 @@
 
 namespace TeamRedWebApi.Migrations
 {
+#pragma warning disable CS1591
     public partial class images : Migration
     {
+#pragma warning disable CS1591
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(

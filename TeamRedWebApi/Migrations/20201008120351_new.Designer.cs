@@ -9,6 +9,7 @@ using TeamRedProject.DbContexts;
 
 namespace TeamRedWebApi.Migrations
 {
+#pragma warning disable CS1591
     [DbContext(typeof(RealEstateContext))]
     [Migration("20201008120351_new")]
     partial class @new

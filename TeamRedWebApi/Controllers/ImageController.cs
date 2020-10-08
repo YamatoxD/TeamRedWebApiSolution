@@ -13,6 +13,7 @@ using TeamRedWebApi.Models.ImageModel;
 
 namespace TeamRedWebApi.Controllers
 {
+#pragma warning disable CS1591
     [Route("images")]
     [ApiController]
     public class ImageController : ControllerBase

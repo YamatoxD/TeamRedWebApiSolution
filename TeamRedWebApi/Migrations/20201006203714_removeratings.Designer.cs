@@ -9,6 +9,7 @@ using TeamRedProject.DbContexts;
 
 namespace TeamRedWebApi.Migrations
 {
+#pragma warning disable CS1591
     [DbContext(typeof(RealEstateContext))]
     [Migration("20201006203714_removeratings")]
     partial class removeratings

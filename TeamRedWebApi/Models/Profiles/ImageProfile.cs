@@ -8,6 +8,7 @@ using TeamRedWebApi.Models.ImageModel;
 
 namespace TeamRedWebApi.Models.Profiles
 {
+#pragma warning disable CS1591
     public class ImageProfile : Profile
     {
         public ImageProfile()
