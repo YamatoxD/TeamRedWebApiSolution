@@ -30,11 +30,9 @@ namespace TeamRedWebApi.Models.RealEstateModel
 
         public string ConstructionYear { get; set; }
 
-        public DateTimeOffset CreatedOn { get; set; }
+        public DateTimeOffset AdCreated { get; set; }
 
         public int Type { get; set; }
-        public string ImagUrl { get; set; }
-
     }
 #pragma warning restore CS1591
 }
