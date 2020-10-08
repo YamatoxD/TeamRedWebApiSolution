@@ -20,7 +20,7 @@ namespace TeamRedWebApi.Profiles
                     dest => dest.Comments,
                     opt => opt.MapFrom(src => src.Comments.Count()));
 
-            CreateMap<UserDto, User>();
+            //CreateMap<UserDto, User>();
 
             CreateMap<CreateUserDto, User>();
 

@@ -14,8 +14,11 @@ namespace TeamRedWebApi.Profiles
         public RealEstateProfile()
         {
             CreateMap<RealEstate, RealEstateDto>();
+
             CreateMap<RealEstate, RealEstateDetailsDto>();
+
             CreateMap<RealEstate, RealEstateDetailsPrivateDto>();
+
             CreateMap<CreateRealEstateDto, RealEstate>();
         }
     }
