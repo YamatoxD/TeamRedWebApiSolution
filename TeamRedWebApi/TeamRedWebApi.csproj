@@ -9,6 +9,10 @@
     <DocumentationFile>TeamRedWebApi.xml</DocumentationFile>
     <NoWarn>1701;1702;</NoWarn>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />

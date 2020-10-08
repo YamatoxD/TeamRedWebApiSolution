@@ -29,6 +29,9 @@ namespace TeamRedWebApi.Controllers
             this._webHostEnvironment = webHostEnvironment;
         }
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{realestatId}")]
         public ActionResult<IEnumerable<ImageDto>> GetImagesFromRealEstate([FromRoute] int realestatId)
         {
@@ -38,6 +41,10 @@ namespace TeamRedWebApi.Controllers
 
             return Ok(_mapper.Map<IEnumerable<ImageDto>>(imageEntity));
         }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet]
         public IActionResult GetImage([FromQuery] int imageid)
         {
@@ -48,6 +55,8 @@ namespace TeamRedWebApi.Controllers
             return Ok(_mapper.Map<ImageDto>(imageEntity));
         }
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Authorize]
         [HttpPost]
         public IActionResult Post([FromForm] int realestateId, [FromForm] string title, [FromForm] IFormCollection formdata)
