@@ -17,6 +17,7 @@ namespace TeamRedWebApi.Profiles
             CreateMap<Comment, CommentDto>().ForMember(
                     dest => dest.UserName,
                     opt => opt.MapFrom(src => $"{src.Creator.UserName}"));
+
             CreateMap<CreateCommentDto, Comment>();
         }
     }

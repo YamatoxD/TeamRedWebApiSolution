@@ -56,6 +56,7 @@ namespace TeamRedWebApi.Controllers
 
             string realestateImagesPath = CreatePath(realestateId);
             CreateDirectory(realestateImagesPath);
+
             SaveFile(realestateId, formdata, realestateImagesPath, title);
 
             return Ok();
@@ -71,6 +72,7 @@ namespace TeamRedWebApi.Controllers
                     var extension = Path.GetExtension(file.FileName);
                     var filename = DateTime.Now.ToString("yymmssff");
                     var path = Path.Combine(realestatePath, filename) + extension;
+
                     userRepo.AddImage(realestateId, path, title);
                     userRepo.Save();
 

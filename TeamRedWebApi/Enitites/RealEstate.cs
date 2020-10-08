@@ -18,14 +18,14 @@ namespace TeamRedProject.Enitites
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [StringLength(50, MinimumLength = 2)]
         public string Title { get; set; }
 
         [Required]
         [MaxLength(100)]
         public string Address { get; set; }
 
-        [MaxLength(1500)]
+        [StringLength(1000, MinimumLength = 2)]
         public string Description { get; set; }
 
         [Required]
