@@ -2,6 +2,8 @@
 
 namespace TeamRedWebApi.Migrations
 {
+#pragma warning disable CS1591
+
     public partial class @new : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

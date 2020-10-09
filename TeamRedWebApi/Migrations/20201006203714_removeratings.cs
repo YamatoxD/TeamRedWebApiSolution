@@ -2,6 +2,7 @@
 
 namespace TeamRedWebApi.Migrations
 {
+#pragma warning disable CS1591
     public partial class removeratings : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
