@@ -1,0 +1,399 @@
+{
+	"info": {
+		"_postman_id": "fb797e34-b665-4e98-b0a5-8364e39d5be5",
+		"name": "RealestateProjectCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5000/token?username=Janne&password=janne123",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlRlc3QxIiwibmJmIjoxNjAyMTg2NzQ0LCJleHAiOjE2MDIyNzMxNDQsImlhdCI6MTYwMjE4Njc0NH0.VXxXKBNEiJbovbCs-ZyBlj8blClryMyQGGVOmmGnz_4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/token?username=Janne&password=janne123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"token"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Janne"
+						},
+						{
+							"key": "password",
+							"value": "janne123"
+						}
+					]
+				},
+				"description": "post Token"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/account/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"username\":\"tetst\",\n\t\"Email\":\"test@jaja\",\n\t\"password\":\"t123\",\n\t\"confirmpassword\": \"t123\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/account/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"account",
+						"register"
+					]
+				},
+				"description": "post Register account "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ikphbm5lIiwibmJmIjoxNjAxOTE5MDIzLCJleHAiOjE2MDIwMDU0MjMsImlhdCI6MTYwMTkxOTAyM30.v_oV_SoU39jj_UvXSZMspfxdISfs02Zp2TNj3qm8WVg"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/Users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Users"
+					]
+				},
+				"description": "Get Users"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Users/Rate",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ikphbm5lIiwibmJmIjoxNjAyMDAzNTMwLCJleHAiOjE2MDIwODk5MzAsImlhdCI6MTYwMjAwMzUzMH0.STVCp7RDtYxM4WmplY9Y0E0Vh3YD4h7DnVZpglCEwhE"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"userid\":4,\n\t\t\"value\":4\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Users/Rate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Users",
+						"Rate"
+					]
+				},
+				"description": "put Rate user"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Comments",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ikphbm5lIiwibmJmIjoxNjAxOTE5NDk5LCJleHAiOjE2MDIwMDU4OTksImlhdCI6MTYwMTkxOTQ5OX0.tohtg25BcF1EDwhaxFX63WaqZTg4Zdw0M6okEzVJ8MU"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/Comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Comments",
+						"1"
+					]
+				},
+				"description": "Get Comments from Realestate"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Comments/1?skip=1&take=3",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ikphbm5lIiwibmJmIjoxNjAxOTI3NDY2LCJleHAiOjE2MDIwMTM4NjYsImlhdCI6MTYwMTkyNzQ2Nn0.s6rM7OA4Hn0wT2ksUE2Y1xv3TiOww51y6lTYjOHeT84"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/Comments/1?skip=1&take=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Comments",
+						"1"
+					],
+					"query": [
+						{
+							"key": "skip",
+							"value": "1"
+						},
+						{
+							"key": "take",
+							"value": "3"
+						}
+					]
+				},
+				"description": "get comments skip/take"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Comments",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ikphbm5lIiwibmJmIjoxNjAxOTE5NDk5LCJleHAiOjE2MDIwMDU4OTksImlhdCI6MTYwMTkxOTQ5OX0.tohtg25BcF1EDwhaxFX63WaqZTg4Zdw0M6okEzVJ8MU"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/Comments/ByUser/Janne",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Comments",
+						"ByUser",
+						"Janne"
+					]
+				},
+				"description": "Get Comments from User"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Comments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ikphbm5lIiwibmJmIjoxNjAxOTE5NDk5LCJleHAiOjE2MDIwMDU4OTksImlhdCI6MTYwMTkxOTQ5OX0.tohtg25BcF1EDwhaxFX63WaqZTg4Zdw0M6okEzVJ8MU"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n                \"realestateid\":1,\n                \"content\":\"Home Home\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Comments"
+					]
+				},
+				"description": "post Comment"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/RealEstates",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ikphbm5lIiwibmJmIjoxNjAxOTE5MDIzLCJleHAiOjE2MDIwMDU0MjMsImlhdCI6MTYwMTkxOTAyM30.v_oV_SoU39jj_UvXSZMspfxdISfs02Zp2TNj3qm8WVg"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/RealEstates/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"RealEstates",
+						"6"
+					]
+				},
+				"description": "Get Realestates"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/RealEstates?skip=1&take=3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/RealEstates?skip=1&take=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"RealEstates"
+					],
+					"query": [
+						{
+							"key": "skip",
+							"value": "1"
+						},
+						{
+							"key": "take",
+							"value": "3"
+						}
+					]
+				},
+				"description": "Get RealEstates skip and take"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/RealEstates",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ikphbm5lIiwibmJmIjoxNjAxOTE5MDIzLCJleHAiOjE2MDIwMDU0MjMsImlhdCI6MTYwMTkxOTAyM30.v_oV_SoU39jj_UvXSZMspfxdISfs02Zp2TNj3qm8WVg"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n                \"Title\":\"Testabc\",\n                \"Address\":\"abcgatan\",\n                \"Description\":\"abc Home\",\n                \"RentingPrice\":6000,\n                \"PurchasePrice\":400000,\n                \"Contact\":\"23332\",\n                \"Constructionyear\":2010,\n                \"type\":1\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/RealEstates",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"RealEstates"
+					]
+				},
+				"description": "post Realestate"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
