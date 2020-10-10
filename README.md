@@ -10,7 +10,9 @@ https://teamredwebapifinal.azurewebsites.net/index.html
 # SQL Server Management Studio (SSMS)
 "Server=tcp:teamredapi.database.windows.net,1433;Initial Catalog=TeamRedApiDbFinal;Persist Security Info=False;User ID=teamredadmin;Password=AdminPassword!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 
-
+Username: teamredadmin
+Password: AdminPassword!
+![Image of SSMS Login](https://github.com/YamatoxD/TeamRedWebApiSolution/blob/master/Images/SSMS_Login.png)
 
 # Hur man installerar
 1. Öppna visual studio och välj Clone a repository.
