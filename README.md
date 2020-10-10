@@ -7,6 +7,11 @@ https://trello.com/b/uW7SQhM9/project-aspnet-webapi
 # Azure: 
 https://teamredwebapifinal.azurewebsites.net/index.html
 
+# SQL Server Management Studio (SSMS)
+"Server=tcp:teamredapi.database.windows.net,1433;Initial Catalog=TeamRedApiDbFinal;Persist Security Info=False;User ID=teamredadmin;Password=AdminPassword!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+
+
+
 # Hur man installerar
 1. Öppna visual studio och välj Clone a repository.
 2. copy paste 'https://github.com/YamatoxD/TeamRedWebApiSolution.git' i repository location.
