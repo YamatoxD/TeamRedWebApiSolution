@@ -28,9 +28,13 @@ Måndag - Torsdag: Skapade Repositories. Vilket gick väldigt smidigt men som ko
 
 <h4>Vecka 40:</h4>
 
-Måndag - Torsdag: Implementering av Authentication. Vilket var ett problem där vi och sutarna inte riktigt var överens om hur vi skulle gå till väga men som löstes för att claes kom in och berättade hur vi skulle göra.<br/>
+Måndag - Torsdag: Implementering av Authentication vilket var ett problem där vi och sutarna inte riktigt var överens om hur vi skulle gå till väga men som löstes för att claes kom in och berättade hur vi skulle göra. Sedab byggde vi även upp en Postman Collection för att kunna testa API:t<br/>
+
+![Image of Postman](https://github.com/YamatoxD/TeamRedWebApiSolution/blob/master/Images/PostmanCollectionScreenshot.png)</br>
 
 <h4>Vecka 41:</h4>
 
 Måndag - Tisdag: Implementering av Swagger dokumentation, Jag tycker att dukumentation via Swagger var en väldigt smidig och bra väg att gå till väga, Det gjorde koden väldigt enkel att gå igenom och fälja hur man ska använda API:t, Dessutom var det väldigt enkelt att hitta information om Swagger och väldigt enkelt att implementera.<br/>
 Onsdag - Fradag: Fix av Authentication och uppladdning till Azure. Azure stötte vi på problem då vi först inte fick azure hemsidan att fungera men som vi sedan löste genom att titta på error codes från azure och genom att flytta en Fil till en annan plats. Sedan hade vi problem med att få Databasen att connecta till Azure sidan, men som sedan Victor löste på ett smidigt sätt.
+
+![Image of swagger](https://github.com/YamatoxD/TeamRedWebApiSolution/blob/master/Images/Swagger%20Screenshot.png)</br>
