@@ -1,4 +1,4 @@
-<h1>Loggbok</h1></br>
+<h1>Loggbok</h1>
 <h2>Projekt i Web API Utveckling<br/>
 Jesper Eriksson</h2>
 </center>
@@ -8,7 +8,10 @@ Jesper Eriksson</h2>
 Måndag: Vi gick igenom projektet och planerade lite Databas modell och skapning av trello.<br/>
 Tisdag: Skapade en Github och planerade fortsatt utveckling av systemet.<br/>
 Onsdag - Torsdag: Började med Research för skapande av webapi och användning av Postman via Pluralsight.<br/>
-Fredag - Lördag: Skapande och implementering av Databasen. Först Byggde vi upp en databas midell i draw.IO och sedan gick vi vidare genom att bygga upp databasen med hjälp av Entity Framework Code first, det kom lite kompliceringar men allt gick smidigt och alla fel som uppstod kunde vi lösa väldigt snabbt och smidigt.<br/>
+Fredag - Lördag: Skapande och implementering av Databasen. Först Byggde vi upp en databas midell i draw.IO och sedan gick vi vidare genom att bygga upp databasen med hjälp av Entity Framework Code first, det kom lite kompliceringar men allt gick smidigt och alla fel som uppstod kunde vi lösa väldigt snabbt och smidigt.
+![Image of diagram](https://github.com/YamatoxD/TeamRedWebApiSolution/blob/master/Images/Diagram.PNG)</br>
+
+
 Söndag: Möte med SUT:arna och planering för fortsatt utveckling. Mötet gik bra, vi diskuterade hur vi skulle gå till väga med lite authentisering och hur vi såg på framtida utveckling.<br/>
 
 <h4>Vecka 38:</h4>
