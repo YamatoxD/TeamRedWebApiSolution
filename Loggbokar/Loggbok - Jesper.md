@@ -1,6 +1,6 @@
-<h1>Loggbok</h1>
-<h2>Projekt i Web API Utveckling<h2>
-<h2>Jesper Eriksson</h2>
+<h1>Loggbok</h1></br>
+<h2>Projekt i Web API Utveckling<br/>
+Jesper Eriksson</h2>
 </center>
 
 <h4>Vecka 37:</h4>
