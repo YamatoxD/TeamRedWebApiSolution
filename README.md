@@ -1,18 +1,11 @@
 # Uppgift info 
 https://docs.google.com/document/d/1mC03XOWfkkqzSxUAw5MHmrffO3QunRT9OulhKA1rQJQ/edit?usp=sharing
 
-# Trello: 
+# Trello
 https://trello.com/b/uW7SQhM9/project-aspnet-webapi
 
-# Azure: 
+# Azure
 https://teamredwebapifinal.azurewebsites.net/index.html
-
-# SQL Server Management Studio (SSMS)
-"Server=tcp:teamredapi.database.windows.net,1433;Initial Catalog=TeamRedApiDbFinal;Persist Security Info=False;User ID=teamredadmin;Password=AdminPassword!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-
-Username: teamredadmin
-Password: AdminPassword!
-![Image of SSMS Login](https://github.com/YamatoxD/TeamRedWebApiSolution/blob/master/Images/SSMS_Login.png)
 
 # Hur man installerar
 1. Öppna visual studio och välj Clone a repository.
@@ -25,6 +18,9 @@ Om du väljer att använda en local databas glöm inte att göra en 'Update-Data
 https://www.postman.com/downloads/
 1. Öppna postman och tryck på File / New... (eller gör en CTRL + N)
 2. Gå till Templates och sök efter RealEstateProjectCollection
+
+![Image of postman](https://github.com/YamatoxD/TeamRedWebApiSolution/blob/master/Images/PostmanCollection.PNG)
+
 3. Tryck på Run in Postman.
 4. Om du inte vet hur man gör en variable följ denna websidan https://learning.postman.com/docs/sending-requests/variables/
 lägg till en variable som heter url och sätt initial/current value till localhost:5000 eller till azure websidan
@@ -39,3 +35,10 @@ Om du inte vill göra en Get Token så finns det en login som gör samma sak fö
     "Username": "Test1",
     "Password": "Test123!"
 }
+
+# SQL Server Management Studio (SSMS)
+"Server=tcp:teamredapi.database.windows.net,1433;Initial Catalog=TeamRedApiDbFinal;Persist Security Info=False;User ID=teamredadmin;Password=AdminPassword!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+
+Username: teamredadmin
+Password: AdminPassword!
+![Image of SSMS Login](https://github.com/YamatoxD/TeamRedWebApiSolution/blob/master/Images/SSMS_Login.png)
